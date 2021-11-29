@@ -1,0 +1,22 @@
+/* 현재 페이지의 타이틀 */
+.title {
+  /* border: 1px solid black; */
+  height: 15%;
+  align-items: flex-end;
+  font-family: 'Gaegu', cursive;
+  font-size: 5.2vw;
+  color: #0076BA;
+}
+
+@media only screen and (max-width: 1800px) {
+  .title {
+    font-size: 93.5px;
+  }
+}
+
+/* 좌우 여백이 없어질 시기가 되면 95% 비율 유지 */
+@media only screen and (max-width: 1100px) {
+  .title {
+    font-size: 8.4vw;
+  }
+}
