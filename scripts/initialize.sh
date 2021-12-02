@@ -4,6 +4,6 @@ npm install
 npm install pm2@latest -g
 sudo apt-get update
 sudo apt-get install authbind
-sudo touch /etc/authbind/byport/81
-sudo chown ubuntu /etc/authbind/byport/81
-sudo chmod 755 /etc/authbind/byport/81
+sudo touch /etc/authbind/byport/8080
+sudo chown ubuntu /etc/authbind/byport/8080
+sudo chmod 755 /etc/authbind/byport/8080
