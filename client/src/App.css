@@ -31,6 +31,11 @@ body * { touch-action: none; }
   align-items: center;
 }
 
+/* 전체 엘리먼트 적용 */
+a {
+  text-decoration: none;
+}
+
 
 /* 보이는 스크린 전체 - 백그라운드 칼라 */
 .App {
