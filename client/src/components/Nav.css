@@ -1,0 +1,25 @@
+.nav {
+  height: 10%;
+}
+
+.nav-box {
+  flex: 1;
+  height: 100%;
+}
+
+.nav-button {
+  height: 100%;
+}
+
+.nav-icon {
+  height: 70%;
+}
+
+.nav-icon:hover {
+  height: 80%;
+  cursor: pointer;
+}
+
+.nav-icon:active {
+  height: 70%;
+}
