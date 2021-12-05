@@ -3,6 +3,7 @@ const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const { auth, diary, calender, talk, userinfo } = require('./routes');
 
 const HTTPS_PORT = 443;
 
@@ -18,29 +19,24 @@ app.use(
   })
 );
 
-//인증 관련(로그인, 로그아웃, 소셜, 자동로그인)
-const auth = require('./routes/auth');
+//필요 기능 라우팅
 app.use("/auth", auth);
-
-// 일기/get-post-put-delete
-const diary = require('./routes/diary');
 app.use("/diary", diary);
-
-// 캘린더/get-post-put-delete
-const calender = require('./routes/calender');
 app.use("/calender", calender);
-
-// 톡/get-post-put-delete
-const talk = require('./routes/talk');
 app.use("/talk", talk);
-
-// 유저 정보/post회원가입-put정보수정-delete회원탈퇴
-const userinfo = require('./routes/userinfo');
 app.use("/userinfo", userinfo);
 
 // 테스트용 get요청
 app.get("/", (req, res) => {
-  res.send("Hello World!!")
+  console.log(req)
+  console.log(req.body)
+  res.send("Hello BNB World!!")
+});
+
+app.post("/", (req, res) => {
+  console.log(req)
+  console.log(req.body)
+  res.send("Hello BNB World!!")
 });
 
 let server;

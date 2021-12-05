@@ -1,0 +1,112 @@
+.Login-page {
+  flex: 1;
+  /* box-shadow: 0px 0px 10px 0px #0076BA; */
+  border-radius: 20px;
+}
+
+.login-title {
+  padding-top: 20px;
+  font-size: 100px;
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+}
+
+.login-box {
+  flex: 1;
+}
+
+.login-contents {
+  height: 500px;
+}
+
+.login-input {
+  -ms-ime-mode: disabled;
+  border-radius: 5px;
+  width: 300px;
+  font-size: 12px;
+  border: 0;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.input-name {
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+  font-size: 20px;
+}
+
+.error {
+  font-size: 20px;
+  font-family: 'Gaegu', cursive;
+  color: red;
+  animation-name: move;
+  transform-origin: 50% 0%;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes move {
+  0% {transform: rotate(0dg);}
+  50% {transform: rotate(-1dg);}
+  75% {transform: rotate(1dg);}
+  100% {transform: rotate(1dg);}
+}
+
+.social-box {
+  flex: 1;
+}
+
+.loginButton {
+  width: 300px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Gaegu', cursive;
+  font-size: 20px;
+}
+
+.nomalButton {
+  background-color: #FFF9E8;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.loginButton:hover {
+  box-shadow: 0px 0px 5px 3px #0076BA;
+}
+
+.loginButton:active {
+  box-shadow: none;
+}
+
+.googleButton {
+  width: 300px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Gaegu', cursive;
+  font-size: 20px;
+}
+
+.kakao {
+  background-color:	#FEE500;
+}
+
+.google {
+  background-color: white;
+}
+
+.kakaoLogo {
+  height: 32px;
+}
+
+.blank {
+  flex: 1.5;
+}
+
+@media only screen and (max-height: 768px) {
+
+}
+
+@media only screen and (max-height: 500px) {
+
+}

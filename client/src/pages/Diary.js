@@ -13,7 +13,7 @@ function Diary({ isLogin }) {
       <div>일기2</div>
       <div>일기3</div>
     </div>
-    <Nav />
+    <Nav isLogin={isLogin} page="diary"/>
     </>
   )
 }

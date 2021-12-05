@@ -1,5 +1,6 @@
 .nav {
-  height: 10%;
+  height: 12%;
+  border-top: 1px solid #0076BA;
 }
 
 .nav-box {
@@ -12,14 +13,14 @@
 }
 
 .nav-icon {
-  height: 70%;
+  height: 60%;
 }
 
 .nav-icon:hover {
-  height: 80%;
+  height: 70%;
   cursor: pointer;
 }
 
 .nav-icon:active {
-  height: 70%;
+  height: 60%;
 }

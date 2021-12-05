@@ -27,4 +27,5 @@ module.exports = {
   post_userinfo: require('./userinfo/post'),
   put_userinfo: require('./userinfo/put'),
   delete_userinfo: require('./userinfo/delete'),
+  post_connect: require('./userinfo/connect'),
 }
