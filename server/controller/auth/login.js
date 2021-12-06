@@ -20,19 +20,20 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: `${keys.join(', ')}(body) must be String, input ${values.join(', ')}` });
   }
   //받아온 정보로 아이디 조회
-  const userinfo = await db.user.findOne({
+  const info = await db.user.findOne({
     where: { idName: id }
   })
   //일치하는 유저 없을 경우
-  if(!userinfo) return res.status(400).json({ error: "ID or password is incorrect." });
+  if(!info) return res.status(400).json({ error: "ID or password is incorrect." });
+  const userinfo = info.dataValues;
   //일치할 경우 패스워드 조회
-  bcrypt.compare(password, userinfo.dataValues.password, (err, result) => {
+  bcrypt.compare(password, userinfo.password, (err, result) => {
     //일치하지 않으면
   if(!result) return res.status(400).json({ error: "ID or password is incorrect." });
     //일치하면
     const payload = {
-      id: userinfo.dataValues.idName,
-      social: userinfo.dataValues.social,
+      id: userinfo.idName,
+      social: userinfo.social,
     }
     // 토큰 만들기
     const accessToken = createAccessToken(payload);
@@ -46,8 +47,13 @@ module.exports = async (req, res) => {
     //로그인 성공 응답
     res.status(200).json({
       data: {
-        ...req.body,
-        accessToken: accessToken
+        accessToken: accessToken,
+        id: userinfo.idName,
+        name: userinfo.name,
+        email: userinfo.email,
+        social: userinfo.social,
+        gender: userinfo.gender,
+        spouse: userinfo.spouse
       },
       message: "Information passed"
     })

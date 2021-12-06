@@ -5,7 +5,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { auth, diary, calender, talk, userinfo } = require('./routes');
 
-const HTTPS_PORT = 443;
+const HTTPS_PORT = 8080;
 
 const app = express();
 app.use(express.json());
