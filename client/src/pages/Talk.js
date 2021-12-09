@@ -1,21 +1,21 @@
-import './Calendar.css';
+import './Talk.css';
 import Title from '../components/Title';
 import Nav from '../components/Nav';
 
-function Calendar({ isLogin }) {
+function Talk({ isLogin }) {
 
   return (
     <>
-    <Title title="일 정 표" />
-    <div className="Calendar-pages" >
+    <Title title="엄 마 톡" />
+    <div className="Talk-pages" >
       <div>add 버튼 들어갈 공간</div>
       <div>일기1</div>
       <div>일기2</div>
       <div>일기3</div>
     </div>
-    <Nav isLogin={isLogin} page="calendar"/>
+    <Nav isLogin={isLogin} page="talk"/>
     </>
   )
 }
 
-export default Calendar;
+export default Talk;

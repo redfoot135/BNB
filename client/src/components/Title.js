@@ -4,11 +4,7 @@ function Title ({ title }) {
 
 
   return (
-    <>
-      <div className="title flex j-center">
-        <div className="flex">{title}</div>
-      </div>
-    </>
+    <div className="title">{title}</div>
   )
 }
 

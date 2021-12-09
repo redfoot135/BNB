@@ -1,7 +1,6 @@
 /* 현재 페이지의 타이틀 */
 .title {
   /* border: 1px solid black; */
-  height: 15%;
   align-items: flex-end;
   font-family: 'Gaegu', cursive;
   font-size: 5.2vw;
@@ -19,4 +18,8 @@
   .title {
     font-size: 8.4vw;
   }
+}
+
+@media only screen and (max-width: 767px) {
+
 }

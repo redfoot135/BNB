@@ -1,0 +1,162 @@
+.Login-page {
+  flex: 1;
+  /* box-shadow: 0px 0px 10px 0px #0076BA; */
+  border-radius: 20px;
+}
+
+.login-title {
+  font-size: 100px;
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+}
+
+.login-box {
+  flex: 1;
+}
+
+.login-contents {
+  height: 350px;
+  padding: 15px;
+  transition: all 0.3s;
+}
+
+.login-carousel {
+  width: 320px;
+  height: 370px;
+  overflow: hidden;
+}
+
+.login-input {
+  -ms-ime-mode: disabled;
+  height: 22px;
+  border-radius: 5px;
+  width: 300px;
+  font-size: 12px;
+  border: 0;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.keepLogin {
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+  font-size: 20px;
+}
+
+.input-name {
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+  font-size: 20px;
+}
+
+.error {
+  font-size: 20px;
+  font-family: 'Gaegu', cursive;
+  color: red;
+  animation-name: shake;
+  transform-origin: 50% 0%;
+  animation-duration: 0.1s;
+  animation-iteration-count: 2;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes shake {
+  0% {transform: translateX( 0px );}
+  33.3% {transform: translateX( -3px );}
+  66.6% {transform: translateX( 0px );}
+  100% {transform: translateX( 3px );}
+}
+
+.social-box {
+  flex: 1;
+}
+
+.loginButton {
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Gaegu', cursive;
+  font-size: 20px;
+  color: black;
+}
+
+.nomalButton {
+  background-color: #FFF9E8;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.loginButton:hover {
+  box-shadow: 0px 0px 5px 3px #0076BA;
+}
+
+.loginButton:active {
+  box-shadow: none;
+}
+
+.googleButton {
+  width: 300px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Gaegu', cursive;
+  font-size: 20px;
+}
+
+.kakao {
+  background-color:	#FEE500;
+}
+
+.google {
+  background-color: white;
+}
+
+.kakaoLogo {
+  height: 32px;
+}
+
+.blank {
+  flex: 1.5;
+}
+
+.moveLeft {
+  /* margin-left: -320px; */
+  transform: translateX(-330px);
+}
+
+.moveRight {
+  /* margin-left: -320px; */
+  transform: translateX(330px);
+}
+
+.find-contents {
+  width: 320px;
+  transition: all 0.3s;
+  padding: 10px;
+  margin-left: -330px;
+}
+
+.find-box1 {
+  height: 70px;
+}
+.find-box2 {
+  height: 105px;
+}
+
+
+.Join-contents {
+  width: 320px;
+  transition: all 0.3s;
+  padding: 10px;
+}
+
+
+
+@media only screen and (max-height: 768px) {
+
+}
+
+@media only screen and (max-height: 500px) {
+
+}
