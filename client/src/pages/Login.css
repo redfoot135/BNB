@@ -5,7 +5,6 @@
 }
 
 .login-title {
-  padding-top: 20px;
   font-size: 100px;
   font-family: 'Gaegu', cursive;
   color: #0076BA;
@@ -17,7 +16,7 @@
 
 .login-contents {
   height: 350px;
-  padding: 10px;
+  padding: 15px;
   transition: all 0.3s;
 }
 
@@ -121,15 +120,36 @@
   flex: 1.5;
 }
 
+.moveLeft {
+  /* margin-left: -320px; */
+  transform: translateX(-330px);
+}
+
 .moveRight {
-  margin-left: -320px;
+  /* margin-left: -320px; */
+  transform: translateX(330px);
 }
 
-@keyframes rightMove {
-  100% {transform: translateX( -320px );}
+.find-contents {
+  width: 320px;
+  transition: all 0.3s;
+  padding: 10px;
+  margin-left: -330px;
+}
+
+.find-box1 {
+  height: 70px;
+}
+.find-box2 {
+  height: 105px;
 }
 
 
+.Join-contents {
+  width: 320px;
+  transition: all 0.3s;
+  padding: 10px;
+}
 
 
 

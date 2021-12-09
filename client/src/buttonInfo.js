@@ -1,4 +1,4 @@
-export default [
+const buttonInfo = [
   {
     name: "home",
     link: "/",
@@ -30,3 +30,5 @@ export default [
     src: "https://i.ibb.co/KbwthLc/728934-enter-login-right-arrow-forward-icon.png"
   },
 ]
+
+export default buttonInfo;

@@ -25,7 +25,7 @@ function Kakao({ setIsLogin, setLoading, setUserinfo }) {
       setLoading(false);
       navigate("/Login");
     })
-  }, [])
+  }, [setIsLogin, setLoading, setUserinfo, navigate])
 
   return (
     <>

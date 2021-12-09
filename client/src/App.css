@@ -1,6 +1,9 @@
 body { overflow: hidden; }
 body * { touch-action: none; }
 
+body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
+
+
 /* 플렉스용도 클래스 */
 .flex {
   display: flex;
