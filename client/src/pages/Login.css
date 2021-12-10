@@ -16,7 +16,7 @@
 
 .login-contents {
   height: 350px;
-  padding: 0px 20px;
+  padding: 0px 25px;
   transition: all 0.3s;
 }
 
@@ -122,12 +122,12 @@
 
 .moveLeft {
   /* margin-left: -320px; */
-  transform: translateX(-320px);
+  transform: translateX(-325px);
 }
 
 .moveRight {
   /* margin-left: -320px; */
-  transform: translateX(320px);
+  transform: translateX(325px);
 }
 
 .find-contents {
