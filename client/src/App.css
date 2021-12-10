@@ -1,5 +1,5 @@
 body { overflow: hidden; }
-body * { touch-action: none; }
+/* body * { touch-action: none; } */
 
 body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
 
