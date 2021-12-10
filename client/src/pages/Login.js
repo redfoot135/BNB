@@ -153,7 +153,7 @@ function Login ({ isLogin, setIsLogin, setLoading, setUserinfo }) {
         </div>
       </div>
     </div>
-    <Nav isLogin={isLogin} page="login" />
+    {/* <Nav isLogin={isLogin} page="login" /> */}
     </>
   )
 }
