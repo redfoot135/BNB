@@ -1,0 +1,5 @@
+.comment-container {
+  width: 48%;
+  max-height: 100%;
+  overflow-y: scroll;
+}

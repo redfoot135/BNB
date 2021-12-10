@@ -98,7 +98,7 @@ function Login ({ isLogin, setIsLogin, setLoading, setUserinfo }) {
     <div className="Login-page flex-col j-space-around a-center">
       <div className="login-box flex-col a-center j-center">
         <div className="login-title">BNB</div>
-        <div className="login-carousel flex" >
+        <div className="login-carousel flex j-center" >
 
           <div className="find-contents flex-col a-center j-space-around" ref={findContents}>
             <div className="find-box1 flex-col a-center j-space-between">

@@ -5,7 +5,7 @@
 }
 
 .login-title {
-  font-size: 100px;
+  font-size: 70px;
   font-family: 'Gaegu', cursive;
   color: #0076BA;
 }
@@ -16,13 +16,13 @@
 
 .login-contents {
   height: 350px;
-  padding: 15px;
+  padding: 0px 10px;
   transition: all 0.3s;
 }
 
 .login-carousel {
-  width: 320px;
-  height: 370px;
+  width: 310px;
+  height: 350px;
   overflow: hidden;
 }
 
@@ -122,19 +122,19 @@
 
 .moveLeft {
   /* margin-left: -320px; */
-  transform: translateX(-330px);
+  transform: translateX(-312px);
 }
 
 .moveRight {
   /* margin-left: -320px; */
-  transform: translateX(330px);
+  transform: translateX(314px);
 }
 
 .find-contents {
   width: 320px;
   transition: all 0.3s;
-  padding: 10px;
-  margin-left: -330px;
+  /* padding: 10px; */
+  /* margin-left: -315px; */
 }
 
 .find-box1 {
@@ -148,7 +148,7 @@
 .Join-contents {
   width: 320px;
   transition: all 0.3s;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 
