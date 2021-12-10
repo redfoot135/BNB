@@ -58,9 +58,7 @@
   animation-iteration-count: 2;
 }
 
-.hidden {
-  display: none;
-}
+
 
 @keyframes shake {
   0% {transform: translateX( 0px );}
