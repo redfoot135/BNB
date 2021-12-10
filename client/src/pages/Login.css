@@ -122,12 +122,12 @@
 
 .moveLeft {
   /* margin-left: -320px; */
-  transform: translateX(-325px);
+  transform: translateX(-326px);
 }
 
 .moveRight {
   /* margin-left: -320px; */
-  transform: translateX(325px);
+  transform: translateX(326px);
 }
 
 .find-contents {
