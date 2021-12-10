@@ -122,18 +122,18 @@
 
 .moveLeft {
   /* margin-left: -320px; */
-  transform: translateX(-326px);
+  transform: translateX(-327.5px);
 }
 
 .moveRight {
   /* margin-left: -320px; */
-  transform: translateX(326px);
+  transform: translateX(327.5px);
 }
 
 .find-contents {
   width: 300px;
   transition: all 0.3s;
-  padding-left: 7.5px;
+  padding-left: 5px;
   /* padding: 10px; */
   /* margin-left: -315px; */
 }
@@ -148,7 +148,7 @@
 
 .Join-contents {
   width: 300px;
-  padding-right: 7.5px;
+  padding-right: 5px;
   transition: all 0.3s;
   /* padding: 10px; */
 }
