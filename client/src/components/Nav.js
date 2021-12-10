@@ -8,9 +8,9 @@ function Nav ({ isLogin, page }) {
     <nav className="nav flex j-center">
       {buttonInfo.filter(el => !(el.name === page || (isLogin && el.name === "login") || (!isLogin && el.name === "mypage"))).map(el => {
         return <div className="nav-box flex j-center a-center" key={el.name}>
-          {/* <Link to={el.link} className="nav-button flex a-center j-center"> */}
+          <Link to={el.link} className="nav-button flex a-center j-center">
           <img className="nav-icon" src={el.src} alt={el.name + " icon"} />
-          {/* </Link> */}
+          </Link>
         </div>
       })}
     </nav>
