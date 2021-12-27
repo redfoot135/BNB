@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 const { REACT_APP_SERVER, REACT_APP_CLIENT_ID, REACT_APP_REDIRECT_URI } = process.env;
 
-function Login ({ isLogin, setIsLogin, setLoading, setUserinfo }) {
+function Login ({ userinfo, setLoading, setUserinfo }) {
   //필요한 데이터 선언
   const [ findId, setFindId ] = useState("");
 
@@ -33,7 +33,7 @@ function Login ({ isLogin, setIsLogin, setLoading, setUserinfo }) {
     })
     .then(res => {
       //로그인 상태 변경
-      setIsLogin(true);
+      // setIsLogin(true);
       //받아온 유저 정보 변경
       setUserinfo(res.data.data);
       //로딩 끝내고 홈으로 이동
@@ -153,7 +153,7 @@ function Login ({ isLogin, setIsLogin, setLoading, setUserinfo }) {
         </div>
       </div>
     </div>
-    <Nav isLogin={isLogin} page="login" />
+    <Nav userinfo={userinfo} page="login" />
     </>
   )
 }

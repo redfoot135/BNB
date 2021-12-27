@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const { REACT_APP_SERVER } = process.env;
 
-function Kakao({ setIsLogin, setLoading, setUserinfo }) {
+function Kakao({ setLoading, setUserinfo }) {
 
   const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ function Kakao({ setIsLogin, setLoading, setUserinfo }) {
     .then(res => {
       console.log(res.data)
       //로그인 성공하면 로그인 여부 변경, 받아온 유저 정보 저장
-      setIsLogin(true);
+      // setIsLogin(true);
       setUserinfo(res.data.data);
       //로딩 종료하고 홈으로 이동
       setLoading(false);
@@ -25,7 +25,7 @@ function Kakao({ setIsLogin, setLoading, setUserinfo }) {
       setLoading(false);
       navigate("/Login");
     })
-  }, [setIsLogin, setLoading, setUserinfo, navigate])
+  }, [])
 
   return (
     <>

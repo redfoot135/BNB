@@ -2,7 +2,7 @@ import './Mypage.css';
 import Title from '../components/Title';
 import Nav from '../components/Nav';
 
-function Mypage({ isLogin }) {
+function Mypage({ userinfo }) {
 
   return (
     <>
@@ -13,7 +13,7 @@ function Mypage({ isLogin }) {
       <div>일기2</div>
       <div>일기3</div>
     </div>
-    <Nav isLogin={isLogin} page="mypage"/>
+    <Nav userinfo={userinfo} page="mypage"/>
     </>
   )
 }
