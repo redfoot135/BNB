@@ -97,8 +97,9 @@
 /* 좌우 여백이 없어질 시기가 되면 95% 비율 유지 */
 @media only screen and (max-width: 1100px) {
   .z-add{
-    top: 12.5vw;
     width:95%;
+    top: 12.5vw;
+    /* height: 77vmin; */
   }
 }
 
