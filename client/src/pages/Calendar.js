@@ -2,7 +2,7 @@ import './Calendar.css';
 import Title from '../components/Title';
 import Nav from '../components/Nav';
 
-function Calendar({ isLogin }) {
+function Calendar({ userinfo }) {
 
   return (
     <>
@@ -13,7 +13,7 @@ function Calendar({ isLogin }) {
       <div>일기2</div>
       <div>일기3</div>
     </div>
-    <Nav isLogin={isLogin} page="calendar"/>
+    <Nav userinfo={userinfo} page="calendar"/>
     </>
   )
 }

@@ -1,438 +1,60 @@
 import './Diary.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Title from '../components/Title';
 import Nav from '../components/Nav';
+import Page from '../components/Page';
 
-function Diary({ isLogin }) {
+function Diary({ userinfo }) {
 
-  const openDiary = (e) => {
-    if(e.currentTarget.lastChild.classList[3] === "mini") {
-      e.currentTarget.classList.add("z-add");
-      e.currentTarget.lastChild.classList.remove("mini");
-      e.currentTarget.scrollIntoView();
-    }else {
-      e.currentTarget.lastChild.classList.add("mini");
-      e.currentTarget.classList.remove("z-add");
-      e.currentTarget.scrollIntoView();
+  const [diaries, setDiaries] = useState(null);
+
+  useEffect(()=> {
+    // 로그인 되어 있을 때만 데이터 받아오기
+    if(userinfo) {
+      axios.get('https://localhost:8080/Diary', {
+        headers: {
+          authorization: `Bearer ${userinfo.accessToken}`
+        }
+      })
+      .then(data => {
+        // 다이어리 데이터 상태로 만들어주기
+        setDiaries(data);
+      })
+      .catch(data => {
+        // 토큰이 만료된 것이면
+        if(data.response.data.err === "Token has expired") {
+          // 리프레시 토큰 있으면 엑세스 토큰 재발급 요청
+          
+        }
+      })
     }
-  }
+  },[]);
 
+  
   return (
     <>
     <Title title="일 기 장" />
     <div className="diary-container flex-col a-center">
       <div className="diary">add 버튼 들어갈 공간</div>
 
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
+      <Page />
       
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="diary" onClick={openDiary}>
-        <div>2021년 12월 09일</div>
-        <div>일기 제목</div>
-        <div className="diary-contents flex j-space-around mini">
-          <div className="diary-img-box flex-col a-center j-space-around">
-            <img className="diary-img" src="https://i.ibb.co/mvPpfqY/pngwing-com-1.png" alt="baby Pic"/>
-          </div>
-          <div className="diary-docs flex-col a-center">
-            <div className="diary diary-doc">
-              <div>{`<금쪽이 엄마>`}</div>오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            {/* <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div>
-            <div className="diary diary-doc">오늘은 어쩌구 저쩌구 했다. 병원 다녀오기도 힘들고 대기시간도 길고 코로나도 걱정이고 걱정걱정걱정 투성이다.</div> */}
-            <div className="diary add-post">+</div>
-          </div>
-        </div>
-      </div>
-
+      
     </div>
-    <Nav isLogin={isLogin} page="diary"/>
+    <Nav userinfo={userinfo} page="diary"/>
     </>
   )
 }

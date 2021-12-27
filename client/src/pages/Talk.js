@@ -2,7 +2,7 @@ import './Talk.css';
 import Title from '../components/Title';
 import Nav from '../components/Nav';
 
-function Talk({ isLogin }) {
+function Talk({ userinfo }) {
 
   return (
     <>
@@ -13,7 +13,7 @@ function Talk({ isLogin }) {
       <div>일기2</div>
       <div>일기3</div>
     </div>
-    <Nav isLogin={isLogin} page="talk"/>
+    <Nav userinfo={userinfo} page="talk"/>
     </>
   )
 }

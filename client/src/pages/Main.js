@@ -2,8 +2,7 @@ import './Main.css';
 import Title from '../components/Title';
 import { Link } from 'react-router-dom';
 
-function Main({ isLogin }) {
-  
+function Main({ userinfo }) {
   
   return (
     <>
@@ -22,7 +21,7 @@ function Main({ isLogin }) {
       </div>
     </div>
 
-    <div className="button-box flex j-space-between">
+    <div className="button-box flex j-space-evenly">
       <Link to="/Diary" className="menu-button flex-col a-center j-center">
         <img className="menu-icon" src="https://i.ibb.co/N1F5LCW/3721295-copybook-education-notebook-notes-school-icon.png" alt="diary icon" />
         <div className="menu-text">일기장</div>
@@ -35,7 +34,7 @@ function Main({ isLogin }) {
         <img className="menu-icon" src="https://i.ibb.co/PjMFJBZ/5027855-chat-communication-message-talk-icon.png" alt="talk icon" />
         <div className="menu-text">엄마톡</div>
       </Link>
-      {isLogin ?
+      {userinfo ?
         <Link to="/Mypage" className="menu-button flex-col a-center j-center">
           <img className="menu-icon" src="https://i.ibb.co/ykxZvqM/2021-11-20-2-03-35.png" alt="mypage icon" />
           <div className="menu-text">내정보</div>

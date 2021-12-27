@@ -13,7 +13,7 @@ import Kakao from './pages/Kakao';
 
 function App() {
   //상태(state)로 관리하는 데이터 모음
-  const [ isLogin, setIsLogin ] = useState(false);  //로그인 여부
+  // const [ isLogin, setIsLogin ] = useState(false);  //로그인 여부는 받아온 유저 정보가 있으면 로그인 // 없으면 로그아웃
   const [ loading, setLoading ] = useState(false);  //로팅 페이지 용도
   const [ userinfo, setUserinfo ] = useState(null); //받아온 유저 정보
   
@@ -24,16 +24,16 @@ function App() {
   return (
     <BrowserRouter>
     { loading ? <Loading /> : null }
-      <div className="App flex-col a-center">
-        <div className="container flex-col">
+      <div className="App flex-col a-center j-center">
+        <div className="container flex-col a-center j-center">
           <Routes>
-            <Route exact path='/' element={ <Main isLogin={isLogin} /> } />
-            <Route path='/Diary' element={ <Diary isLogin={isLogin} /> } />
-            <Route path='/Calendar' element={ <Calendar isLogin={isLogin} /> } />
-            <Route path='/Talk' element={ <Talk isLogin={isLogin} /> } />
-            <Route path='/Mypage' element={ <Mypage isLogin={isLogin} /> } />
-            <Route path='/Login' element={ <Login isLogin={isLogin} setIsLogin={setIsLogin} setLoading={setLoading} setUserinfo={setUserinfo} /> } />
-            <Route path='/Kakao' element={ <Kakao setIsLogin={setIsLogin} setLoading={setLoading} setUserinfo={setUserinfo} /> } />
+            <Route exact path='/' element={ <Main userinfo={userinfo} /> } />
+            <Route path='/Diary' element={ <Diary userinfo={userinfo} /> } />
+            <Route path='/Calendar' element={ <Calendar userinfo={userinfo} /> } />
+            <Route path='/Talk' element={ <Talk userinfo={userinfo} /> } />
+            <Route path='/Mypage' element={ <Mypage userinfo={userinfo} /> } />
+            <Route path='/Login' element={ <Login userinfo={userinfo} setLoading={setLoading} setUserinfo={setUserinfo} /> } />
+            <Route path='/Kakao' element={ <Kakao setLoading={setLoading} setUserinfo={setUserinfo} /> } />
           </Routes>
         </div>
       </div>
