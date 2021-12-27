@@ -35,6 +35,7 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
       //로그인 상태 변경
       // setIsLogin(true);
       //받아온 유저 정보 변경
+      console.log(res)
       setUserinfo(res.data.data);
       //로딩 끝내고 홈으로 이동
       navigate("/");

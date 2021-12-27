@@ -48,6 +48,22 @@ a {
   overflow-y: scroll;
 }
 
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0 , 0.6);
+  z-index: 99;
+}
+
+.message {
+  width: 300px;
+  height: 200px;
+  background-color: #FFF9E8;
+  border-radius: 10px;
+  font-family: 'Gaegu', cursive;
+  font-size: 24px;
+}
 
 /* 보이는 스크린 전체 - 백그라운드 칼라 */
 .App {
