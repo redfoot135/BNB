@@ -45,7 +45,7 @@ module.exports = async (req, res) => {
     // //성공했으면
     res.status(201).json({
       data: req.body,
-      message: "You have become an associate member."
+      message: "You have become a member."
     })
   })
 }

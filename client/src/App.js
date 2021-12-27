@@ -1,6 +1,7 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 //필요 페이지 불러오기
 import Main from './pages/Main';
 import Diary from './pages/Diary';
@@ -10,6 +11,7 @@ import Mypage from './pages/Mypage';
 import Login from './pages/Login';
 import Loading from './components/Loading';
 import Kakao from './pages/Kakao';
+const { REACT_APP_SERVER } = process.env;
 
 function App() {
   //상태(state)로 관리하는 데이터 모음
@@ -17,7 +19,13 @@ function App() {
   const [ loading, setLoading ] = useState(false);  //로팅 페이지 용도
   const [ userinfo, setUserinfo ] = useState(null); //받아온 유저 정보
   
-  
+  useEffect(() => {
+    axios.get(`${REACT_APP_SERVER}/auth/autoLogin`, {
+      headers: {
+        withCredentials: true
+      }
+    })
+  },[])
 
 
 
@@ -28,7 +36,7 @@ function App() {
         <div className="container flex-col a-center j-center">
           <Routes>
             <Route exact path='/' element={ <Main userinfo={userinfo} /> } />
-            <Route path='/Diary' element={ <Diary userinfo={userinfo} /> } />
+            <Route path='/Diary' element={ <Diary userinfo={userinfo} setLoading={setLoading} /> } />
             <Route path='/Calendar' element={ <Calendar userinfo={userinfo} /> } />
             <Route path='/Talk' element={ <Talk userinfo={userinfo} /> } />
             <Route path='/Mypage' element={ <Mypage userinfo={userinfo} /> } />

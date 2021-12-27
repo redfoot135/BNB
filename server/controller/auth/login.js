@@ -40,10 +40,10 @@ module.exports = async (req, res) => {
     const refreshToken = createRefreshToken(payload);
     //리프레시 토큰 쿠키로 보내기
     res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: "none"
-    })
+     });
     //로그인 성공 응답
     res.status(200).json({
       data: {
