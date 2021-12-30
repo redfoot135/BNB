@@ -3,10 +3,11 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import AWS from "aws-sdk";
 import { v4 } from 'uuid';
-import { useNavigate } from "react-router-dom";
 import Title from '../components/Title';
 import Nav from '../components/Nav';
 import DiaryPage from '../components/DiaryPage';
+import LoginReqModal from '../components/LoginReqModal';
+import FailModal from '../components/failModal';
 const { REACT_APP_SERVER, REACT_APP_ACCESSKEY, REACT_APP_SECRETKEY, REACT_APP_BUCKET } = process.env;
 
 function Diary({ userinfo, setLoading }) {
@@ -26,7 +27,6 @@ function Diary({ userinfo, setLoading }) {
   const addRef = useRef(null);
   const failRef = useRef(null);
   const loginRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(()=> {
     // 로그인 되어 있을 때만 데이터 받아오기
@@ -101,6 +101,7 @@ function Diary({ userinfo, setLoading }) {
     if(!userinfo) {
       loginRef.current.classList.remove("hidden");
       submitRef.current.classList.add("hidden");
+      submitRef2.current.classList.add("hidden");
       return;
     }
     // 로딩 시작
@@ -122,6 +123,8 @@ function Diary({ userinfo, setLoading }) {
       })
       .catch(err => {
         setLoading(false);
+        submitRef.current.classList.add("hidden");
+        submitRef2.current.classList.add("hidden");
         failRef.current.classList.remove("hidden");
       })
       return;
@@ -188,11 +191,6 @@ function Diary({ userinfo, setLoading }) {
     resetExecution();
   }
 
-  //실패 모달 닫기
-  const failClose = () => {
-    failRef.current.classList.add("hidden");
-  }
-
 
   // 일기 작성 페이지 열기
   const open = () => {
@@ -206,11 +204,6 @@ function Diary({ userinfo, setLoading }) {
     addRef.current.classList.remove("z-add");
     e.stopPropagation()
   }
-
-  // 로그인 요청 닫기
-  const loginClose = () => {
-    navigate("/Login")
-  }
   
   return (
     <>
@@ -218,8 +211,8 @@ function Diary({ userinfo, setLoading }) {
     <div ref={resetRef} className="modal flex a-center j-center hidden">
       <div className="message flex-col a-center j-space-evenly">
         <div>새로고침 하시겠습니까?</div>
-        <button className="nomalButton diary-add-button" onClick={resetExecution}>예</button>
-        <button className="nomalButton diary-add-button" onClick={resetCancel}>아니오</button>
+        <button className="modal-button" onClick={resetExecution}>예</button>
+        <button className="modal-button" onClick={resetCancel}>아니오</button>
       </div>
     </div>
 
@@ -227,8 +220,8 @@ function Diary({ userinfo, setLoading }) {
     <div ref={submitRef} className="modal flex a-center j-center hidden">
       <div className="message flex-col a-center j-space-evenly">
         <div>일기를 작성합니다.</div>
-        <button className="nomalButton diary-add-button" onClick={submitExecution}>예</button>
-        <button className="nomalButton diary-add-button" onClick={submitCancel}>아니오</button>
+        <button className="modal-button" onClick={submitExecution}>예</button>
+        <button className="modal-button" onClick={submitCancel}>아니오</button>
       </div>
     </div>
 
@@ -236,34 +229,24 @@ function Diary({ userinfo, setLoading }) {
     <div ref={submitRef2} className="modal flex a-center j-center hidden">
       <div className="message flex-col a-center j-space-evenly">
         <div>사진 없이 작성합니다.</div>
-        <button className="nomalButton diary-add-button" onClick={submitExecution}>예</button>
-        <button className="nomalButton diary-add-button" onClick={submitCancel}>아니오</button>
+        <button className="modal-button" onClick={submitExecution}>예</button>
+        <button className="modal-button" onClick={submitCancel}>아니오</button>
       </div>
     </div>
 
     {/* 로그인 요청 모달 */}
-    <div ref={loginRef} className="modal flex a-center j-center hidden">
-      <div className="message flex-col a-center j-space-evenly">
-        <div>로그인 후 이용 가능합니다.</div>
-        <button className="nomalButton diary-add-button" onClick={loginClose}>로그인</button>
-      </div>
-    </div>
+    <LoginReqModal loginRef={loginRef} />
 
     {/* 성공 모달 */}
     <div ref={successRef} className="modal flex a-center j-center hidden">
       <div className="message flex-col a-center j-space-evenly">
         <div>완료했습니다.</div>
-        <button className="nomalButton diary-add-button" onClick={successClose}>확 인</button>
+        <button className="modal-button" onClick={successClose}>확 인</button>
       </div>
     </div>
 
     {/* 실패 모달 */}
-    <div ref={failRef} className="modal flex a-center j-center hidden">
-      <div className="message flex-col a-center j-space-evenly">
-        <div>전송에 실패했습니다.<br/>다시 시도해주세요.</div>
-        <button className="nomalButton diary-add-button" onClick={failClose}>확 인</button>
-      </div>
-    </div>
+    <FailModal failRef={failRef}/>
 
     {/* 페이지 내용 */}
     <Title title="일 기 장" />
@@ -279,9 +262,9 @@ function Diary({ userinfo, setLoading }) {
           <input ref={fileRef} id="addFile" className="hidden" type="file" accept="image/*" onChange={ setImg }></input>
           <textarea ref={textRef} className="add-text" placeholder="일기를 적어보세요"></textarea>
           <div className="flex">
-            <button type="button" className="nomalButton diary-add-button" onClick={close}>취소하기</button>
-            <button type="button" className="nomalButton diary-add-button" onClick={resetModal}>새로고침</button>
-            <button type="button" className="nomalButton diary-add-button" onClick={submitModal}>작성하기</button>
+            <button type="button" className="modal-button" onClick={close}>취소하기</button>
+            <button type="button" className="modal-button" onClick={resetModal}>새로고침</button>
+            <button type="button" className="modal-button" onClick={submitModal}>작성하기</button>
           </div>
         </form>
       </div>

@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.user.hasMany(models.diary, {foreignKey: 'writer'})
       models.user.hasMany(models.diary_comment, {foreignKey: 'writer'})
+      // models.user.hasOne(models.baby, {foreignKey: "mom"})
+      // models.user.hasOne(models.baby, {foreignKey: "dad"})
     }
   };
   user.init({

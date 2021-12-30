@@ -1,5 +1,5 @@
 import './Login.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Nav from '../components/Nav';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,11 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
 
   //useHistory 에서 useNavigate로 변경됨
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(userinfo) navigate("/");
+  },[userinfo])
+
 
   //에러 메시지 애니메이션용 Ref
   const idInput = useRef(null);
@@ -30,12 +35,16 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
       id: idInput.current.value,
       password: pwInput.current.value,
       keep: keepLogin.current.value
-    })
+    },
+    {
+      withCredentials: true
+    }
+    )
     .then(res => {
       //로그인 상태 변경
       // setIsLogin(true);
       //받아온 유저 정보 변경
-      console.log(res)
+      console.log(res.data)
       setUserinfo(res.data.data);
       //로딩 끝내고 홈으로 이동
       navigate("/");
@@ -69,24 +78,24 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
 
   //회원가입 캐러셀 구현
   const joinOn = () => {
-    loginContents.current.classList = "login-contents flex-col a-center j-space-around moveLeft";
-    joinContents.current.classList = "Join-contents flex-col a-center j-space-around moveLeft";
+    loginContents.current.classList.add("moveLeft");
+    joinContents.current.classList.add("moveLeft");
   }
 
   const joinClose = () => {
-    loginContents.current.classList = "login-contents flex-col a-center j-space-around";
-    joinContents.current.classList = "Join-contents flex-col a-center j-space-around";
+    loginContents.current.classList.remove("moveLeft");
+    joinContents.current.classList.remove("moveLeft");
   }
 
   //아이디 패스워드 찾기 캐러셀
   const findOn = () => {
-    loginContents.current.classList = "login-contents flex-col a-center j-space-around moveRight";
-    findContents.current.classList = "find-contents flex-col a-center j-space-around moveRight";
+    loginContents.current.classList.add("moveRight");
+    findContents.current.classList.add("moveRight");
   }
 
   const findClose = () => {
-    loginContents.current.classList = "login-contents flex-col a-center j-space-around";
-    findContents.current.classList = "find-contents flex-col a-center j-space-around";
+    loginContents.current.classList.remove("moveRight");
+    findContents.current.classList.remove("moveRight");
   }
 
   const test =(e) => {
