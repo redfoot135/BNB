@@ -10,9 +10,9 @@ function Mypage({ userinfo, setUserinfo }) {
 
   const navigate = useNavigate();
   
-  useEffect(() => {
-    if(!userinfo) navigate("/");
-  },[])
+  // useEffect(() => {
+  //   if(!userinfo) navigate("/");
+  // },[])
 
   let birthday = null;
   let dDay = null;
