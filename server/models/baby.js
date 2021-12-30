@@ -11,12 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // models.baby.belongsTo(models.user, {foreignKey: "mom"})
+      // models.baby.belongsTo(models.user, {foreignKey: "dad"})
     }
   };
   baby.init({
     name: DataTypes.STRING,
     mom: DataTypes.INTEGER,
-    dad: DataTypes.INTEGER
+    dad: DataTypes.INTEGER,
+    birthday: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'baby',

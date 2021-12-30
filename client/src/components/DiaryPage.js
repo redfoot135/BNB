@@ -1,6 +1,6 @@
-import './Page.css';
+import './DiaryPage.css';
 
-function Page ({ diary }) {
+function DiaryPage ({ diary }) {
   // 날짜
   const date = diary.createdAt.split("/")
 
@@ -39,4 +39,4 @@ function Page ({ diary }) {
   )
 }
 
-export default Page;
+export default DiaryPage;

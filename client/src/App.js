@@ -20,10 +20,9 @@ function App() {
   const [ userinfo, setUserinfo ] = useState(null); //받아온 유저 정보
   
   useEffect(() => {
-    axios.get(`${REACT_APP_SERVER}/auth/autoLogin`, {
-      headers: {
-        withCredentials: true
-      }
+    axios.get(`${REACT_APP_SERVER}/auth/autoLogin`, { withCredentials: true })
+    .then(res => {
+      setUserinfo(res.data.data);
     })
   },[])
 
@@ -38,8 +37,8 @@ function App() {
             <Route exact path='/' element={ <Main userinfo={userinfo} /> } />
             <Route path='/Diary' element={ <Diary userinfo={userinfo} setLoading={setLoading} /> } />
             <Route path='/Calendar' element={ <Calendar userinfo={userinfo} /> } />
-            <Route path='/Talk' element={ <Talk userinfo={userinfo} /> } />
-            <Route path='/Mypage' element={ <Mypage userinfo={userinfo} /> } />
+            <Route path='/Talk' element={ <Talk userinfo={userinfo} setLoading={setLoading} /> } />
+            <Route path='/Mypage' element={ <Mypage userinfo={userinfo} setUserinfo={setUserinfo}/> } />
             <Route path='/Login' element={ <Login userinfo={userinfo} setLoading={setLoading} setUserinfo={setUserinfo} /> } />
             <Route path='/Kakao' element={ <Kakao setLoading={setLoading} setUserinfo={setUserinfo} /> } />
           </Routes>

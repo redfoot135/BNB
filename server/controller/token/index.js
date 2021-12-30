@@ -48,13 +48,14 @@ module.exports = {
   },
 
   // 자동 로그인
-  autoLogin: (req, res) => {
+  autoLogin: async (req) => {
+    let result = null;
     //쿠키에 리프레시 토큰 없으면 null리턴
-    if(!req.cookies || !req.cookies.refreshToken) return null;
+    if(!req.cookies || !req.cookies.refreshToken) return result;
     //리프레시토큰 선언
     const { refreshToken } = req.cookies;
     //리프레시 토큰 검증
-    jwt.verify(refreshToken, REFRESH_SECRET, async (err, decoded) => {
+    await jwt.verify(refreshToken, REFRESH_SECRET, async (err, decoded) => {
       if(err) return null;
       const payload = {
         id: decoded.id,
@@ -68,13 +69,22 @@ module.exports = {
       //   secure: true,
       //   sameSite: "none"
       //  });
-
       const info = await db.user.findOne({
-        where: check.payload,
+        where: {
+          idName: payload.id,
+          social: payload.social
+        },
       })
       const userinfo = info.dataValues;
-
-      return {
+      let query = { mom: userinfo.id };
+      if(userinfo.gender === "male") query = { dad: userinfo.id };
+      const baby = await db.baby.findOne({
+        attributes: {
+          exclude: ['createdAt', 'updatedAt']
+        },
+        where : query,
+      })
+      result = {
         data: {
           accessToken: accessToken,
           id: userinfo.idName,
@@ -82,10 +92,15 @@ module.exports = {
           email: userinfo.email,
           social: userinfo.social,
           gender: userinfo.gender,
-          spouse: userinfo.spouse
+          spouse: userinfo.spouse,
         },
         messgae: "Ok"
       }
-    })    
+      if(baby) {
+        result.data.baby = baby.dataValues.name,
+        result.data.birthday = baby.dataValues.birthday
+      }
+    })
+    return result;
   }
 }
