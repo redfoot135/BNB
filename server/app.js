@@ -21,11 +21,11 @@ app.use(
 );
 
 //필요 기능 라우팅
-app.use("/auth", auth);
-app.use("/diary", diary);
-app.use("/calendar", calendar);
-app.use("/talk", talk);
-app.use("/userinfo", userinfo);
+// app.use("/auth", auth);
+// app.use("/diary", diary);
+// app.use("/calendar", calendar);
+// app.use("/talk", talk);
+// app.use("/userinfo", userinfo);
 
 // 테스트용 get, post요청
 app.get("/", (req, res) => {
