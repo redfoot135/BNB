@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import './FirstCheck.css';
 const { REACT_APP_SERVER } = process.env;
 
-function ChoiceModal ({ firstRef, userinfo }) {
+function ChoiceModal ({ firstRef, userinfo, setUserinfo }) {
 
   const [ gender, setGender ] = useState("아빠");
   const [ d, setD ] = useState(0);
@@ -78,8 +78,15 @@ function ChoiceModal ({ firstRef, userinfo }) {
         }
       )
       .then(res => {
+        const next = { ...userinfo };
+        if(!userinfo.gender) {
+          next.gender = gender === "아빠" ? "male" : "female";
+          next.name = nameRef.current.value;
+        }
+        next.baby = baby;
+        next.birthday = dateRef.current.value;
+        setUserinfo(next)
         close();
-        // navigate("/")
       })
       .catch(err => {
   

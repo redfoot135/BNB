@@ -72,7 +72,6 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
     )
     .then(res => {
       //받아온 유저 정보 변경
-      console.log(res.data)
       if(res.data.data.birthday) res.data.data.birthday = res.data.data.birthday.slice(0,10);
       setUserinfo(res.data.data);
       //로딩 끝내고 홈으로 이동
@@ -238,7 +237,6 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
   const findPWSubmit = () => {
     axios.get(`${REACT_APP_SERVER}/userinfo/pw?id=${findPWRef1.current.value}&email=${findPWRef2.current.value}`)
     .then(res => {
-      console.log(res.data)
       findPWMessage.current.classList.remove("hidden");
       findPWErr.current.classList.add("hidden");
     })

@@ -171,7 +171,6 @@ function DiaryPage ({ userinfo, data }) {
       }
     )
     .then(res => {
-      console.log(res.data);
       setIsTrue(false);
     })
   }
@@ -238,7 +237,6 @@ function DiaryPage ({ userinfo, data }) {
       checkRef.current.classList.remove("hidden");
     })
     .catch(err => {
-      console.log(err)
     })
   }
 

@@ -10,7 +10,6 @@ import axios from 'axios';
 const { REACT_APP_SERVER } = process.env;
 
 function Mypage({ userinfo, setUserinfo }) {
-  console.log(userinfo)
   const navigate = useNavigate();
   const failRef = useRef(null);
   const checkPWRef = useRef(null);
@@ -47,9 +46,6 @@ function Mypage({ userinfo, setUserinfo }) {
     e.target.parentNode.parentNode.childNodes[1].classList.add("hidden");
   }
   const editClose = (e) => {
-    console.log(e.target.parentNode.firstChild.firstChild.value)
-    // e.target.parentNode.firstChild.firstChild.value = userinfo[e.target.parentNode.firstChild.firstChild.name];
-    console.log(e.target.parentNode.firstChild.firstChild.value)
     e.target.parentNode.classList.add("hidden");
     e.target.parentNode.parentNode.childNodes[1].classList.remove("hidden");
   }

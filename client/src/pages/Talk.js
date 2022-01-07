@@ -4,7 +4,9 @@ import Title from '../components/Title';
 import Nav from '../components/Nav';
 import TalkPage from '../components/TalkPage';
 import LoginReqModal from '../components/LoginReqModal';
+import CheckModal from '../components/CheckModal';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 const { REACT_APP_SERVER } = process.env;
 
 function Talk({ userinfo, setLoading }) {
@@ -12,22 +14,28 @@ function Talk({ userinfo, setLoading }) {
   const [ talk, setTalk ] = useState(null);
   const loginRef = useRef(null);
   const weeksRef = useRef(null);
+  const checkRef = useRef(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    // 로그인 안했으면 로그인 요청
-    if(!userinfo) loginRef.current.classList.remove("hidden");
-    setLoading(true);
-    // 로그인 했으면 데이터 받아오기
-    console.log(weeksRef.current.value)
-    axios.get(`${REACT_APP_SERVER}/talk?weeks=${weeksRef.current.value}`)
-    .then(res => {
-      setTalk(res.data);
-      setLoading(false);
-    })
-    .catch(err => {
-      setLoading(false);
-    })
-  }, [userinfo, setLoading])
+  useEffect(()=> {
+    checkRef.current.classList.remove("hidden");
+  })
+
+  // useEffect(() => {
+  //   // 로그인 안했으면 로그인 요청
+  //   if(!userinfo) loginRef.current.classList.remove("hidden");
+  //   setLoading(true);
+  //   // 로그인 했으면 데이터 받아오기
+  //   console.log(weeksRef.current.value)
+  //   axios.get(`${REACT_APP_SERVER}/talk?weeks=${weeksRef.current.value}`)
+  //   .then(res => {
+  //     setTalk(res.data);
+  //     setLoading(false);
+  //   })
+  //   .catch(err => {
+  //     setLoading(false);
+  //   })
+  // }, [userinfo, setLoading])
 
   // 주차별 정보 받아오기
   const selectWeek = (e) => {
@@ -43,9 +51,14 @@ function Talk({ userinfo, setLoading }) {
     })
   }
 
+  const a = () => {
+    navigate("/");
+  }
+
 
   return (
     <>
+    <CheckModal checkRef={checkRef} func={a} message="개발중입니다" />
     <LoginReqModal loginRef={loginRef} />
     <Title title={!userinfo || userinfo.gender === "female" ? "엄 마 톡" : "아 빠 톡"} />
     <div>

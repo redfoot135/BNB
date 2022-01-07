@@ -39,7 +39,6 @@ function Diary({ userinfo, setLoading }) {
       .then(res => {
         // 다이어리 데이터 상태로 만들어주기
         setDiaries(res.data);
-        console.log(res.data)
       })
       .catch(data => {
         // 액세스 토큰이 만료된 것이면
