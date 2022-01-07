@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import './FirstCheck.css';
-import { useNavigate } from "react-router-dom";
 const { REACT_APP_SERVER } = process.env;
 
 function ChoiceModal ({ firstRef, userinfo }) {
@@ -16,8 +15,6 @@ function ChoiceModal ({ firstRef, userinfo }) {
   const nameRef = useRef(null);
   const nameErrRef = useRef(null);
   const babyErrRef = useRef(null);
-  const navigate = useNavigate();
-
 
   const close = () => {
     firstRef.current.classList.add("hidden");
@@ -44,7 +41,7 @@ function ChoiceModal ({ firstRef, userinfo }) {
   }
 
   const submit = () => {
-    if(!nameTest()) {
+    if(!gender && !nameTest()) {
       left();
       left();
       left();
@@ -81,7 +78,8 @@ function ChoiceModal ({ firstRef, userinfo }) {
         }
       )
       .then(res => {
-        navigate("/")
+        close();
+        // navigate("/")
       })
       .catch(err => {
   
@@ -162,7 +160,7 @@ function ChoiceModal ({ firstRef, userinfo }) {
             </div>
           </div>
 
-          {gender ? <div className="page flex-col a-center j-space-evenly left">
+          {!userinfo.gender ? <div className="page flex-col a-center j-space-evenly left">
             <div className="modal-title">당신은 누구인가요?</div>
             <input ref={nameRef} className="modal-input" placeholder="이름을 적어주세요" onChange={nameTest}/>
             <div ref={nameErrRef} className='error'>한글, 영문, 특수문자 가능, 2~10자</div>

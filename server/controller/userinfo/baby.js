@@ -3,7 +3,7 @@ const db = require('../../models');
 const { Op } = require("sequelize");
 
 module.exports = async (req, res) => {
-  const { name, birthday, gender } = req.body;
+  const { baby, birthday, gender } = req.body;
   console.log(req.body)
   const check = await tokenCheck(req);
   // 검증 실패
@@ -12,19 +12,19 @@ module.exports = async (req, res) => {
   const [data, create] = await db.baby.findOrCreate(
     {
       defaults: {
-        baby: name,
+        baby: baby,
         mom: (check.gender || gender) === "female" ? check.id : null,
         dad: (check.gender || gender) === "male" ? check.id : null,
         birthday: new Date(birthday)
       },
       where: {
-        baby: name,
+        baby: baby,
         [Op.or]: [{ mom: check.id }, { dad: check.id }]
       }
     }
   )
 
-  if(!create) res.status(400).json({ error: "Already exists" })
+  if(!create) return res.status(400).json({ error: "Already exists" })
 
   res.status(201).json(
     {
