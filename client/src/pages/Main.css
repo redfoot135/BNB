@@ -1,0 +1,124 @@
+.carousel-title {
+  height: 8%;
+  font-family: 'Gaegu', cursive;
+  font-size: 3.5vw;
+}
+
+.carousel {
+  width: 97%;
+  flex: 1;
+  /* border: 1px solid black; */
+}
+
+.carousel-inner {
+  width: 50%;
+  /* border: 1px solid black; */
+}
+
+.baby-img {
+  width: 100%;
+  height: 90%;
+}
+
+.carousel-button-box {
+  width: 7%;
+  height: 90%;
+  /* border: 1px solid black; */
+  position: relative;
+}
+
+.carousel-button {
+  width: 100%;
+  display: block;
+  /* box-shadow: 0px 0px 5px 0px #0076BA; */
+  border-radius: 10%;
+}
+
+.carousel-button:hover {
+  box-shadow: 0px 0px 5px 3px #0076BA;
+  cursor: pointer;
+}
+
+.carousel-button:active {
+  box-shadow: none;
+}
+
+.button-box {
+  width: 100%;
+  height: 32%;
+  /* border: 1px solid black; */
+}
+
+.menu-button {
+  height: 90%;
+  width: 23%;
+  background-color: #FFF9E8;
+  border-radius: 5%;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border: 0;
+  text-align: center;
+}
+
+.menu-button:hover {
+  box-shadow: 0px 0px 5px 3px #0076BA;
+  cursor: pointer;
+}
+
+.menu-button:active {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.menu-icon {
+  margin-top: 5%;
+  width: 70%;
+  height: 50%;
+}
+
+.menu-text {
+  /* text-align: center; */
+  margin-top:8%;
+  font-family: 'Gaegu', cursive;
+  font-size: 3.5vw;
+  color: black;
+}
+
+@media only screen and (max-width: 1799px) {
+  .carousel-title {
+    font-size: 63px;
+  }
+  .menu-text {
+    font-size: 63px;
+  }
+}
+
+/* 좌우 여백이 없어질 시기가 되면 95% 비율 유지 */
+@media only screen and (max-width: 1099px) {
+  .carousel-title {
+    font-size: 5.7vw;
+  }
+  .menu-text {
+    font-size: 5.7vw;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .button-box {
+    height: 50%;
+    flex-wrap: wrap;
+    /* border: 1px solid black; */
+  }
+
+  .menu-button {
+    height: 40%;
+    width: 35%;
+    background-color: #FFF9E8;
+    border-radius: 5%;
+    box-shadow: 0px 0px 5px 0px #0076BA;
+    border: 0;
+    text-align: center;
+  }
+
+  .carousel {
+    width: 90%;
+  }
+}

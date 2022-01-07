@@ -1,0 +1,190 @@
+.Calendar-container {
+  /* border: 1px solid black; */
+  box-shadow: none;
+  border-radius: 10px;
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  font-family: 'Gaegu', cursive;
+  font-size: 16px;
+  flex-wrap: wrap;
+  transition: all 0.3s;
+}
+
+.calendar-box {
+  /* border: 1px solid black; */
+  width: 90%;
+  height: 70%;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.calendar-button {
+  margin: 0px 10px;
+}
+
+.calendar-button:hover {
+  cursor: pointer;
+}
+
+.check-date {
+  margin-bottom: 20px;
+}
+
+.calendar {
+  flex: 1;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.week {
+  display: flex;
+}
+
+.week div {
+  flex: 1;
+  margin-bottom: 10px;
+  /* font-size: 16px; */
+}
+
+.dates {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(auto-fill, minmax(1fr, auto));
+}
+
+.dates div:hover {
+  background-color: #a4c3d6;
+  border-radius: 10px;
+}
+
+.gray {
+  color: gray;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+.today {
+  background-color: #D9D9D9;
+  border-radius: 10px;
+}
+
+.schedule-box {
+  /* border: 1px solid black; */
+  /* box-shadow: 0px 0px 5px 0px #0076BA; */
+  overflow: visible;
+  border-radius: 10px;
+  width: 95%;
+  /* height: 90%; */
+  transition: all 0.3s;
+}
+
+.add-schedule {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px;
+  margin: 6px 0px;
+  /* padding: 0px 10px; */
+  background-color: #FFF9E8;
+  width: 97%;
+}
+
+.schedule {
+  position: relative;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px;
+  margin: 6px 0px;
+  /* padding: 0px 10px; */
+  background-color: #FFF9E8;
+  width: 97%;
+}
+
+.add-schedule:hover {
+  cursor: pointer;
+}
+
+.schedules-today {
+  margin-bottom: 20px;
+}
+
+.mini-icon {
+  margin-top: 10px;
+  width: 30px;
+}
+
+.date {
+  flex:1;
+}
+
+.delete {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+
+.delete-icon {
+  margin-left: 5px;
+  width: 16px;
+  /* padding: 10px 15px; */
+}
+
+.delete-icon:hover {
+  cursor: pointer;
+}
+
+.edit-schedule {
+  font-family: 'Gaegu', cursive;
+  font-size: 24px;
+  background-color: #FFF9E8;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 5px;
+  border: 0;
+  margin-top: 10px;
+  resize: none;
+  width: 90%;
+}
+
+
+@media only screen and (min-width: 600px) {
+  .Calendar-container {
+    font-size: 24px;
+    box-shadow: 0px 0px 5px 0px #0076BA;
+  }
+  
+  .calendar-box {
+    width: 43%;
+    height: 90%;
+    margin-bottom: 0px;
+  }
+  .schedule-box {
+    width: 43%;
+    overflow-y: scroll;
+  height: 90%;
+  }
+}
+
+
+/* @media only screen and (max-width: 599px) {
+  .Calendar-container {
+    font-size: 16px;
+    box-shadow: none;
+  }
+  
+  .calendar-box {
+    width: 90%;
+    height: 70%;
+    margin-bottom: 20px;
+  }
+  .schedule-box {
+    width: 95%;
+    overflow: visible;
+  }
+} */

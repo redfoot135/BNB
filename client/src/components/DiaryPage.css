@@ -1,0 +1,25 @@
+.add-post {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px;
+  margin: 6px 0px;
+  padding: 0px 10px;
+  background-color: #FFF9E8;
+  width: 90%;
+}
+
+.add-post:hover {
+  cursor: pointer;
+}
+
+.add-open {
+  min-height: 98%;
+  
+}
+
+.add-open:hover {
+  cursor: auto;
+}
+
+.edit-diary-title {
+  width: 50%;
+}

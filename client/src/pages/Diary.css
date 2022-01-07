@@ -1,0 +1,187 @@
+.diary-container {
+  /* border: 1px solid black; */
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+}
+
+.diary {
+  position: relative;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px;
+  margin: 6px 0px;
+  font-family: 'Gaegu', cursive;
+  font-size: 24px;
+  max-height: 100%;
+  width: 99%;
+  background-color: #FFF9E8;
+  /* transition: all 0.3s; */
+
+}
+
+.diary-contents {
+  flex: 1;
+  flex-wrap: wrap;
+  height: 83%;
+  padding: 10px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.add-diary {
+  transition: all 0.3s;
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.addFile {
+  margin: 10px;
+}
+
+.add-title {
+  width: 90%;
+  border: 0;
+  font-size: 32px;
+  font-family: 'Gaegu', cursive;
+  background-color: #FFF9E8;
+}
+
+.add-title:focus {
+  outline: none;
+}
+
+.add-text {
+  flex: 1;
+  width: 90%;
+  min-height: 50%;
+  border: 0;
+  font-size: 24px;
+  font-family: 'Gaegu', cursive;
+  background-color: #FFF9E8;
+  resize: none;
+}
+
+.add-text:focus {
+  outline: none;
+}
+
+.diary-img-box {
+  position: relative;
+  width: 48%;
+  overflow-y: scroll;
+  max-height: 100%;
+  transition: all 0.3s;
+}
+
+.diary-img {
+  width: 90%;
+}
+
+.add-img {
+  height: 30px;
+  margin-left: 10px;
+}
+
+.fileImg {
+  max-width: 240px;
+  max-height: 200px;
+}
+
+.diary-docs {
+  position: relative;
+  width: 48%;
+  max-height: 98%;
+  overflow-y: scroll;
+  transition: all 0.3s;
+}
+
+.diary-doc {
+  width: 90%;
+  padding: 10px;
+}
+
+
+.diary-blank {
+  padding-top: 1px;
+  width: 100%;
+}
+
+.z-add {
+  position: fixed;
+  z-index: 1;
+  margin: 0;
+  /* max-height: 100%; */
+  top: 130px;
+  bottom: 12%;
+  width: 57%;
+  /* transform: scale(1.01); */
+
+  animation-name: open;
+  transform-origin: 50% 0%;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+.close {
+  position: fixed;
+  padding: 10px 15px;
+}
+
+.mini {
+  height: 0;
+  padding: 0;
+}
+
+
+@keyframes open {
+  0% {transform:scaleY(0)}
+}
+
+
+@media only screen and (max-width: 1800px) {
+  .z-add{
+    width:1024px;
+  }
+}
+
+/* 좌우 여백이 없어질 시기가 되면 95% 비율 유지 */
+@media only screen and (max-width: 1100px) {
+  .z-add{
+    width:95%;
+    top: 12.5vw;
+    /* height: 77vmin; */
+  }
+}
+
+
+
+
+@media only screen and (max-width: 599px) {
+  .z-add {
+    top: 15vw;
+  }
+
+  .diary-img-box {
+    width: 95%;
+    overflow-y: visible;
+  }
+  
+  .diary-docs {
+    width: 95%;
+    height: 50%;
+    overflow-y: visible;
+  }
+
+  .diary-doc {
+    width: 93%;
+  }
+
+  .add-post {
+    width: 93%;
+  }
+
+  .diary-contents {
+    overflow: scroll;
+  }
+}

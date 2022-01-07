@@ -1,0 +1,232 @@
+.Login-page {
+  flex: 1;
+  /* box-shadow: 0px 0px 10px 0px #0076BA; */
+  border-radius: 20px;
+}
+
+.login-title {
+  font-size: 70px;
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+}
+
+.login-box {
+  flex: 1;
+}
+
+.login-contents {
+  height: 350px;
+  padding: 0px 25px;
+  transition: all 0.3s;
+}
+
+.login-carousel {
+  width: 310px;
+  height: 350px;
+  overflow: hidden;
+}
+
+.login-input {
+  -ms-ime-mode: disabled;
+  height: 22px;
+  border-radius: 5px;
+  width: 296px;
+  font-size: 12px;
+  border: 0;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.keepLogin {
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+  font-size: 20px;
+}
+
+.input-name {
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+  font-size: 20px;
+}
+
+.error {
+  font-size: 18px;
+  font-family: 'Gaegu', cursive;
+  color: red;
+  animation-name: shake;
+  transform-origin: 50% 0%;
+  animation-duration: 0.1s;
+  animation-iteration-count: 2;
+}
+
+.ok {
+  font-size: 18px;
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+}
+
+.male-togle-back {
+  position: relative;
+  width: 70px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: skyblue;
+}
+
+.male-togle-back:hover {
+  cursor: pointer;
+}
+
+.female-togle-back {
+  position: relative;
+  width: 70px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: pink;
+}
+
+.female-togle-back:hover {
+  cursor: pointer;
+}
+
+.togle-in {
+  margin-left: 4px;
+  height: 24px;
+  width: 24px;
+  border-radius: 15px;
+  transition: all 0.3s;
+  background-color: white;
+  z-index: 1;
+}
+
+/* .togle-in:hover {
+  cursor: pointer;
+} */
+
+.togle-text {
+  font-size: 18px;
+  font-family: 'Gaegu', cursive;
+  transition: all 0.3s;
+  margin-right: 10px;
+  color: black;
+}
+
+.togle-left {
+  transform: translateX(-22.5px);
+
+}
+
+.togle-right {
+  transform: translateX(37.5px);
+
+}
+
+@keyframes togle-left {
+  0% {transform: translateX( 0px );}
+  100% {transform: translateX( 40px );}
+}
+
+@keyframes togle-right {
+  0% {transform: translateX( 0px );}
+  100% {transform: translateX( -40px );}
+}
+
+@keyframes shake {
+  0% {transform: translateX( 0px );}
+  33.3% {transform: translateX( -3px );}
+  66.6% {transform: translateX( 0px );}
+  100% {transform: translateX( 3px );}
+}
+
+.social-box {
+  flex: 1;
+}
+
+.loginButton {
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Gaegu', cursive;
+  font-size: 20px;
+  color: black;
+}
+
+.nomalButton {
+  background-color: #FFF9E8;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.loginButton:hover {
+  box-shadow: 0px 0px 5px 3px #0076BA;
+}
+
+.loginButton:active {
+  box-shadow: none;
+}
+
+.googleButton {
+  width: 300px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Gaegu', cursive;
+  font-size: 20px;
+}
+
+.kakao {
+  background-color:	#FEE500;
+}
+
+.google {
+  background-color: white;
+}
+
+.kakaoLogo {
+  height: 32px;
+}
+
+.blank {
+  flex: 1.5;
+}
+
+.moveLeft {
+  /* margin-left: -320px; */
+  transform: translateX(-327.5px);
+}
+
+.moveRight {
+  /* margin-left: -320px; */
+  transform: translateX(327.5px);
+}
+
+.find-contents {
+  width: 300px;
+  transition: all 0.3s;
+  padding-left: 5px;
+  /* padding: 10px; */
+  /* margin-left: -315px; */
+}
+
+.find-box1 {
+  height: 70px;
+}
+.find-box2 {
+  height: 105px;
+}
+
+
+.Join-contents {
+  width: 300px;
+  padding-right: 5px;
+  transition: all 0.3s;
+  /* padding: 10px; */
+}
+
+
+
+@media only screen and (max-height: 768px) {
+
+}
+
+@media only screen and (max-height: 500px) {
+
+}

@@ -1,0 +1,134 @@
+.mypage-container {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px;
+  /* border: 1px solid black; */
+  flex: 1;
+  overflow-y: scroll;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.myinfo {
+  /* box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px; */
+  font-family: 'Gaegu', cursive;
+  width: 95%;
+  transition: all 0.3s;
+}
+
+.sub-box {
+  margin: 10px 0px;
+}
+
+.info {
+  font-size: 20px;
+  color: #0076BA;
+}
+
+.sub-title {
+  font-size: 16px;
+}
+
+.edit-icon {
+  width: 18px;
+  margin-left: 5px;
+}
+
+.edit-icon:hover {
+  cursor: pointer;
+}
+
+.edit-input {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  background-color: #FFF9E8;
+  border-radius: 5px;
+  border: 0;
+  font-family: 'Gaegu', cursive;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  /* margin-right: 5px; */
+}
+
+/* .date {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 5px;
+  border: 0;
+  font-family: 'Gaegu', cursive;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-right: 5px;
+} */
+
+
+.mypage-bt-box {
+  /* box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px; */
+  width: 95%;
+  transition: all 0.3s;
+}
+
+.mypage-bt-box button {
+  margin: 10px 0px;
+}
+
+
+.mypage-button {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  border-radius: 10px;
+  font-family: 'Gaegu', cursive;
+  font-size: 24px;
+  background-color: #FFF9E8;
+  border: none;
+  width: 220px;
+}
+
+.mypage-button:hover {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  cursor: pointer;
+}
+
+.mypage-button:active {
+  box-shadow: none;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+  .myinfo {
+    box-shadow: 0px 0px 5px 0px #0076BA;
+    border-radius: 10px;
+    width: 43%;
+    height: 80%;
+  }
+
+  .sub-title {
+    font-size: 24px;
+  }
+
+  .info {
+    font-size: 30px;
+  }
+
+  .edit-icon {
+    width: 24px;
+  }
+
+  .edit-input {
+    font-size: 20px;
+  }
+
+
+  .mypage-bt-box {
+    box-shadow: 0px 0px 5px 0px #0076BA;
+    border-radius: 10px;
+    width: 43%;
+    height: 80%;
+  }
+
+  .mypage-button {
+    box-shadow: none;
+    font-size: 30px;
+  }
+}

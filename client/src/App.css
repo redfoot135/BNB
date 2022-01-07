@@ -1,0 +1,128 @@
+body { overflow: hidden; }
+/* body * { touch-action: none; } */
+
+body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
+
+
+/* 플렉스용도 클래스 */
+.flex {
+  display: flex;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.j-space-around {
+  justify-content: space-around;
+}
+
+.j-space-between {
+  justify-content: space-between;
+}
+
+.j-space-evenly {
+  justify-content: space-evenly;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.a-center {
+  align-items: center;
+}
+
+/* 전체 엘리먼트 적용 */
+a {
+  text-decoration: none;
+}
+
+/* 전체 공용 */
+.hidden {
+  display: none;
+}
+
+.overflow-y {
+  overflow-y: scroll;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0 , 0.6);
+  z-index: 99;
+}
+
+.modal-button {
+  border: none;
+  border-radius: 5px;
+  font-family: 'Gaegu', cursive;
+  font-size: 16px;
+  margin: 10px 5px;
+  color: black;
+  background-color: #FFF9E8;
+  box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 3px #0076BA;
+}
+
+.modal-button:active {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  
+}
+
+.message {
+  width: 300px;
+  height: 200px;
+  background-color: #FFF9E8;
+  border-radius: 10px;
+  font-family: 'Gaegu', cursive;
+  font-size: 24px;
+}
+
+/* 보이는 스크린 전체 - 백그라운드 칼라 */
+.App {
+  text-align: center;
+  background-color: #FFF9E8;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 실제 내용 들어갈 컨테이너 */
+.container {
+  width: 57%;
+  height: 100%;
+  position: relative;
+  /* border: 1px solid black; */
+}
+
+/* 화면 너비가 클때는 비율을 유지하다가 컨테이너 크기가 1024정도 되면 여백이 줄어들 수 있게 컨테이너 폭 고정 */
+@media only screen and (max-width: 1800px) {
+  .container{
+    width:1024px;
+    /* height: 100vmin; */
+
+  }
+}
+
+/* 좌우 여백이 없어질 시기가 되면 95% 비율 유지 */
+@media only screen and (max-width: 1100px) {
+  .container{
+    width:95%;
+    /* height: 100vmin; */
+  }
+}
+
+
+@media only screen and (max-width: 599px) {
+  .container{
+    height: 100%;
+  }
+}
