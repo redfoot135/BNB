@@ -53,12 +53,11 @@ module.exports = {
   autoLogin: async (req) => {
     let result = null;
     //쿠키에 리프레시 토큰 없으면 null리턴
-    console.log(req.cookies)
-    if(!req.cookies || !req.cookies.refreshToken) return result;
+    if(!req.cookies || !req.cookies.refreshToken) return null;
     //리프레시토큰 선언
     const { refreshToken } = req.cookies;
     //리프레시 토큰 검증
-    jwt.verify(refreshToken, REFRESH_SECRET, async (err, decoded) => {
+    await jwt.verify(refreshToken, REFRESH_SECRET, async (err, decoded) => {
       if(err) return null;
       const payload = {
         id: decoded.id,
@@ -72,7 +71,6 @@ module.exports = {
       //   secure: true,
       //   sameSite: "none"
       //  });
-      console.log(typeof `${payload.social}`)
       const info = await db.user.findOne({
         where: { [Op.or] : [{ idName: payload.id }, { social: `${payload.social}` }]},
       })
