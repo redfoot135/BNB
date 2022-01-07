@@ -8,7 +8,6 @@ import Nav from '../components/Nav';
 import DiaryPage from '../components/DiaryPage';
 import LoginReqModal from '../components/LoginReqModal';
 import FailModal from '../components/FailModal';
-import ChoiceModal from '../components/ChoiceModal';
 const { REACT_APP_SERVER, REACT_APP_ACCESSKEY, REACT_APP_SECRETKEY, REACT_APP_BUCKET } = process.env;
 
 function Diary({ userinfo, setLoading }) {
