@@ -10,7 +10,7 @@ function Kakao({ setLoading, setUserinfo }) {
   useEffect(() => {
     setLoading(true)
     const kakaoCode = new URL(window.location.href).searchParams.get('code')
-    axios.post(`${REACT_APP_SERVER}/auth/social`,{kakao: kakaoCode})
+    axios.post(`${REACT_APP_SERVER}/auth/social`,{kakao: kakaoCode},{ withCredentials: true })
     .then(res => {
       console.log(res.data)
       //로그인 성공하면 로그인 여부 변경, 받아온 유저 정보 저장

@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-  res.send("Diary Put")
+  res.send("Talk Post")
 }

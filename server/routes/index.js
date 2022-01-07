@@ -1,7 +1,7 @@
 module.exports = {
   auth: require('./auth'),
   diary: require('./diary'),
-  calender: require('./calender'),
+  calendar: require('./calendar'),
   talk: require('./talk'),
   userinfo: require('./userinfo'),
 }

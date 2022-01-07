@@ -14,9 +14,6 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER
       },
-      writer: {
-        type: Sequelize.STRING
-      },
       comment: {
         type: Sequelize.STRING
       },

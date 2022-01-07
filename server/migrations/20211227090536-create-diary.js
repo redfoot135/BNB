@@ -14,9 +14,13 @@ module.exports = {
       writer: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      date: {
         allowNull: false,
         type: Sequelize.STRING
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,

@@ -49,7 +49,7 @@
 }
 
 .error {
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'Gaegu', cursive;
   color: red;
   animation-name: shake;
@@ -58,7 +58,77 @@
   animation-iteration-count: 2;
 }
 
+.ok {
+  font-size: 18px;
+  font-family: 'Gaegu', cursive;
+  color: #0076BA;
+}
 
+.male-togle-back {
+  position: relative;
+  width: 70px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: skyblue;
+}
+
+.male-togle-back:hover {
+  cursor: pointer;
+}
+
+.female-togle-back {
+  position: relative;
+  width: 70px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: pink;
+}
+
+.female-togle-back:hover {
+  cursor: pointer;
+}
+
+.togle-in {
+  margin-left: 4px;
+  height: 24px;
+  width: 24px;
+  border-radius: 15px;
+  transition: all 0.3s;
+  background-color: white;
+  z-index: 1;
+}
+
+/* .togle-in:hover {
+  cursor: pointer;
+} */
+
+.togle-text {
+  font-size: 18px;
+  font-family: 'Gaegu', cursive;
+  transition: all 0.3s;
+  margin-right: 10px;
+  color: black;
+}
+
+.togle-left {
+  transform: translateX(-22.5px);
+
+}
+
+.togle-right {
+  transform: translateX(37.5px);
+
+}
+
+@keyframes togle-left {
+  0% {transform: translateX( 0px );}
+  100% {transform: translateX( 40px );}
+}
+
+@keyframes togle-right {
+  0% {transform: translateX( 0px );}
+  100% {transform: translateX( -40px );}
+}
 
 @keyframes shake {
   0% {transform: translateX( 0px );}

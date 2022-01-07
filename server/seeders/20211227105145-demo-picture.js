@@ -38,6 +38,36 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },
+    {
+      url: "https://i.ibb.co/mvPpfqY/pngwing-com-1.png",
+      diary_id: 13,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      url: "https://i.ibb.co/mvPpfqY/pngwing-com-1.png",
+      diary_id: 13,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      url: "https://i.ibb.co/mvPpfqY/pngwing-com-1.png",
+      diary_id: 13,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      url: "https://i.ibb.co/mvPpfqY/pngwing-com-1.png",
+      diary_id: 13,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      url: "https://i.ibb.co/mvPpfqY/pngwing-com-1.png",
+      diary_id: 13,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
   ], {});
   },
 

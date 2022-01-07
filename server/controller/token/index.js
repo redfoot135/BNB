@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { ACCESS_SECRET, REFRESH_SECRET } = process.env;
 const db = require('../../models');
+const { Op } = require("sequelize");
 const jwt = require('jsonwebtoken');
 
 module.exports = {
@@ -41,21 +42,23 @@ module.exports = {
         social: result.social
       }
     })
-    return {
-      id: userinfo.dataValues.id,
-      name: userinfo.dataValues.name,
-    };
+    return userinfo.dataValues;
+    // return {
+    //   id: userinfo.dataValues.id,
+    //   name: userinfo.dataValues.name,
+    // };
   },
 
   // 자동 로그인
   autoLogin: async (req) => {
     let result = null;
     //쿠키에 리프레시 토큰 없으면 null리턴
+    console.log(req.cookies)
     if(!req.cookies || !req.cookies.refreshToken) return result;
     //리프레시토큰 선언
     const { refreshToken } = req.cookies;
     //리프레시 토큰 검증
-    await jwt.verify(refreshToken, REFRESH_SECRET, async (err, decoded) => {
+    jwt.verify(refreshToken, REFRESH_SECRET, async (err, decoded) => {
       if(err) return null;
       const payload = {
         id: decoded.id,
@@ -69,19 +72,16 @@ module.exports = {
       //   secure: true,
       //   sameSite: "none"
       //  });
+      console.log(typeof `${payload.social}`)
       const info = await db.user.findOne({
-        where: {
-          idName: payload.id,
-          social: payload.social
-        },
+        where: { [Op.or] : [{ idName: payload.id }, { social: `${payload.social}` }]},
       })
+      if(!info) console.log("1차 걸림")
+      if(!info) return null;
       const userinfo = info.dataValues;
       let query = { mom: userinfo.id };
       if(userinfo.gender === "male") query = { dad: userinfo.id };
       const baby = await db.baby.findOne({
-        attributes: {
-          exclude: ['createdAt', 'updatedAt']
-        },
         where : query,
       })
       result = {
@@ -97,7 +97,7 @@ module.exports = {
         messgae: "Ok"
       }
       if(baby) {
-        result.data.baby = baby.dataValues.name,
+        result.data.baby = baby.dataValues.baby,
         result.data.birthday = baby.dataValues.birthday
       }
     })

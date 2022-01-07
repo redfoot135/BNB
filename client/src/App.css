@@ -50,6 +50,7 @@ a {
 
 .modal {
   position: fixed;
+  top: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0 , 0.6);
@@ -65,6 +66,16 @@ a {
   color: black;
   background-color: #FFF9E8;
   box-shadow: 0px 0px 5px 0px #0076BA;
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 3px #0076BA;
+}
+
+.modal-button:active {
+  box-shadow: 0px 0px 5px 0px #0076BA;
+  
 }
 
 .message {

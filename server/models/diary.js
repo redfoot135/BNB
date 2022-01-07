@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   diary.init({
     title: DataTypes.STRING,
     writer: DataTypes.INTEGER,
-    createdAt: DataTypes.STRING
+    date: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'diary',

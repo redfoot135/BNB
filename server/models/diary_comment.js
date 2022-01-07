@@ -12,13 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.diary_comment.belongsTo(models.diary, {foreignKey: "diary_id"})
-      models.diary_comment.belongsTo(models.user, {foreignKey: "writer"})
+      models.diary_comment.belongsTo(models.user, {foreignKey: "user_id"})
     }
   };
   diary_comment.init({
     diary_id: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER,
-    writer: DataTypes.STRING,
     comment: DataTypes.STRING,
   }, {
     sequelize,

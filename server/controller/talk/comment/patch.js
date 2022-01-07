@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-  res.send("Calender Put")
+  res.send("Talk Put")
 }

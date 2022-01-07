@@ -2,7 +2,6 @@ import './Talk.css';
 import { useState, useEffect, useRef } from 'react';
 import Title from '../components/Title';
 import Nav from '../components/Nav';
-import Comment from '../components/Comment';
 import TalkPage from '../components/TalkPage';
 import LoginReqModal from '../components/LoginReqModal';
 import axios from 'axios';
@@ -16,7 +15,7 @@ function Talk({ userinfo, setLoading }) {
 
   useEffect(() => {
     // 로그인 안했으면 로그인 요청
-    // if(!userinfo) loginRef.current.classList.remove("hidden");
+    if(!userinfo) loginRef.current.classList.remove("hidden");
     setLoading(true);
     // 로그인 했으면 데이터 받아오기
     console.log(weeksRef.current.value)
@@ -28,7 +27,7 @@ function Talk({ userinfo, setLoading }) {
     .catch(err => {
       setLoading(false);
     })
-  }, [])
+  }, [userinfo, setLoading])
 
   // 주차별 정보 받아오기
   const selectWeek = (e) => {
@@ -65,7 +64,7 @@ function Talk({ userinfo, setLoading }) {
     </div>
     <div className="talk-container flex-col a-center" >
 
-      <TalkPage />
+      <TalkPage talk={talk}/>
       <TalkPage />
       <TalkPage />
       <TalkPage />
