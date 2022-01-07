@@ -34,7 +34,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    { userinfo && !userinfo.baby ? <FirstCheck firstRef={firstRef} userinfo={userinfo}/> : null }
+    { userinfo && !userinfo.baby ? <FirstCheck firstRef={firstRef} userinfo={userinfo} setUserinfo={setUserinfo}/> : null }
     { loading ? <Loading /> : null }
       <div className="App flex-col a-center j-center">
         <div className="container flex-col a-center j-center">

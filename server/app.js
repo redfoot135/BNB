@@ -5,7 +5,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { auth, diary, calendar, talk, userinfo } = require('./routes');
 
-const HTTPS_PORT = 8080;
+const HTTPS_PORT = 80;
 
 const app = express();
 app.use(express.json());
@@ -50,7 +50,7 @@ if(fs.existsSync("./key.pem") && fs.existsSync("./cert.pem")){
   server.listen(HTTPS_PORT, () => console.log(`Port : ${HTTPS_PORT}, HTTPS server runnning`));
 
 } else {
-  server = app.listen(8080, () => console.log("port : 8080, HTTP server running"))
+  server = app.listen(8080, () => console.log("port : 80, HTTP server running"))
 };
 
 module.exports = server;

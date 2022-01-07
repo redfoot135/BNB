@@ -40,7 +40,6 @@ function Calendar({ userinfo }) {
         }
       })
       .then(res => {
-        console.log(res.data.data)
         setSchedules(res.data.data);
       })
     }
@@ -87,8 +86,6 @@ function Calendar({ userinfo }) {
 
   
   const submit = () => {
-    console.log("일정 추가")
-
     axios.post(`${REACT_APP_SERVER}/calendar`,
     {
       date : `${year}-${month < 9 ? "0" + (month+1) : month+1}-${date < 10 ? "0" + date : date}`,
@@ -101,7 +98,6 @@ function Calendar({ userinfo }) {
       }
     })
     .then(res => {
-      console.log(res.data)
       setSchedules([...schedules, res.data.data].sort((a,b) => Number(a.time.slice(0,2)+a.time.slice(3)) - Number(b.time.slice(0,2)+b.time.slice(3))))
       close();
     })

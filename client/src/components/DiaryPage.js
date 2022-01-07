@@ -7,7 +7,7 @@ import axios from 'axios';
 const { REACT_APP_SERVER } = process.env;
 
 function DiaryPage ({ userinfo, data }) {
-  
+  console.log(data)
   const [ diary, setDiary ] = useState(data);
   const [ comments, setComments ] = useState(diary.diary_comment);
   const [ message, setMessage ] = useState("");
@@ -171,7 +171,6 @@ function DiaryPage ({ userinfo, data }) {
       }
     )
     .then(res => {
-      console.log(res.data);
       setIsTrue(false);
     })
   }
@@ -238,7 +237,6 @@ function DiaryPage ({ userinfo, data }) {
       checkRef.current.classList.remove("hidden");
     })
     .catch(err => {
-      console.log(err)
     })
   }
 

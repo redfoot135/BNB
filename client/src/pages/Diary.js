@@ -39,7 +39,6 @@ function Diary({ userinfo, setLoading }) {
       .then(res => {
         // 다이어리 데이터 상태로 만들어주기
         setDiaries(res.data);
-        console.log(res.data)
       })
       .catch(data => {
         // 액세스 토큰이 만료된 것이면
@@ -154,7 +153,9 @@ function Diary({ userinfo, setLoading }) {
         axios.post(`${REACT_APP_SERVER}/diary`, {
           title: titleRef.current.value,
           comment: textRef.current.value,
-          url: data.Location
+          url: data.Location,
+          date: `${new Date().getFullYear()}-${Number(new Date().getMonth())+1}-${Number(new Date().getDate())}`
+          // date: `${new Date().getFullYear()}-${Number(new Date().getMonth()) < 9 ? "0" + (Number(new Date().getMonth())+1) : (Number(new Date().getMonth())+1)}-${Number(new Date().getDate()) < 10 ? ("0" + Number(new Date().getDate())) : Number(new Date().getDate())}`
         }, {
           headers: {
             authorization: `Bearer ${userinfo.accessToken}`

@@ -3,7 +3,7 @@ const db = require('../../models');
 const { Op } = require("sequelize");
 
 module.exports = async (req, res) => {
-  const { baby, birthday, gender } = req.body;
+  const { baby, birthday, gender, name } = req.body;
   console.log(req.body)
   const check = await tokenCheck(req);
   // 검증 실패
@@ -21,6 +21,16 @@ module.exports = async (req, res) => {
         baby: baby,
         [Op.or]: [{ mom: check.id }, { dad: check.id }]
       }
+    }
+  )
+
+  const update = await db.user.update(
+    {
+      gender: gender,
+      name: name
+    },
+    {
+      where: { id: check.id }
     }
   )
 
