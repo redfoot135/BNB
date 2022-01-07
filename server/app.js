@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://b-n-b.link.s3-website.ap-northeast-2.amazonaws.com"],
+    origin: ["http://localhost:3000", "http://b-n-b.link.s3-website.ap-northeast-2.amazonaws.com", "https://b-n-b.link"],
     credentials: true,
     origin: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
@@ -21,13 +21,13 @@ app.use(
 );
 
 //필요 기능 라우팅
-app.use("/auth", auth);
-app.use("/diary", diary);
-app.use("/calendar", calendar);
-app.use("/talk", talk);
-app.use("/userinfo", userinfo);
+// app.use("/auth", auth);
+// app.use("/diary", diary);
+// app.use("/calendar", calendar);
+// app.use("/talk", talk);
+// app.use("/userinfo", userinfo);
 
-// 테스트용 get요청
+// 테스트용 get, post요청
 app.get("/", (req, res) => {
   console.log(req)
   console.log(req.body)
