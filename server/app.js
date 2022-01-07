@@ -18,7 +18,7 @@ app.use(
   })
 );
 
-// 필요 기능 라우팅
+//필요 기능 라우팅
 app.use("/auth", auth);
 app.use("/diary", diary);
 app.use("/calendar", calendar);
@@ -30,6 +30,6 @@ app.get("/", (req, res) => {
   res.send("Hello BNB World!!")
 });
 
-server = app.listen(80)
+server = app.listen(80, () => console.log("port : 80, HTTP server running"))
 
 module.exports = server;
