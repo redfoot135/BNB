@@ -3,7 +3,7 @@ const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const { auth, diary, calender, talk, userinfo } = require('./routes');
+const { auth, diary, calendar, talk, userinfo } = require('./routes');
 
 const HTTPS_PORT = 8080;
 
@@ -16,14 +16,14 @@ app.use(
     origin: ["http://localhost:3000", "http://b-n-b.link.s3-website.ap-northeast-2.amazonaws.com"],
     credentials: true,
     origin: true,
-    methods: ["GET", "POST", "PUT", "DELETE"]
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
   })
 );
 
 //필요 기능 라우팅
 app.use("/auth", auth);
 app.use("/diary", diary);
-app.use("/calender", calender);
+app.use("/calendar", calendar);
 app.use("/talk", talk);
 app.use("/userinfo", userinfo);
 

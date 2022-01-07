@@ -7,7 +7,8 @@ import Title from '../components/Title';
 import Nav from '../components/Nav';
 import DiaryPage from '../components/DiaryPage';
 import LoginReqModal from '../components/LoginReqModal';
-import FailModal from '../components/failModal';
+import FailModal from '../components/FailModal';
+import ChoiceModal from '../components/ChoiceModal';
 const { REACT_APP_SERVER, REACT_APP_ACCESSKEY, REACT_APP_SECRETKEY, REACT_APP_BUCKET } = process.env;
 
 function Diary({ userinfo, setLoading }) {
@@ -30,16 +31,16 @@ function Diary({ userinfo, setLoading }) {
 
   useEffect(()=> {
     // 로그인 되어 있을 때만 데이터 받아오기
-    console.log("유즈 이펙트 실행")
     if(userinfo) {
       axios.get(`${REACT_APP_SERVER}/diary`, {
         headers: {
           authorization: `Bearer ${userinfo.accessToken}`
         }
       })
-      .then(data => {
+      .then(res => {
         // 다이어리 데이터 상태로 만들어주기
-        setDiaries(data.data);
+        setDiaries(res.data);
+        console.log(res.data)
       })
       .catch(data => {
         // 액세스 토큰이 만료된 것이면
@@ -49,13 +50,12 @@ function Diary({ userinfo, setLoading }) {
         }
       })
     }
-  },[change]);
+  },[change, userinfo]);
 
   // 선택 사진 띄우는 함수
   const setImg = (e) => {
     if(e.currentTarget.files[0]) {
       const file = e.currentTarget.files[0];
-      console.log(file)
       imgRef.current.src = URL.createObjectURL(file);
       setFile(file);
     }else {
@@ -120,6 +120,7 @@ function Diary({ userinfo, setLoading }) {
       .then(res => {
         setLoading(false);
         successRef.current.classList.remove("hidden");
+        submitRef2.current.classList.add("hidden");
       })
       .catch(err => {
         setLoading(false);
@@ -234,6 +235,9 @@ function Diary({ userinfo, setLoading }) {
       </div>
     </div>
 
+    {/* 선택 모달 */}
+    {/* <ChoiceModal /> */}
+
     {/* 로그인 요청 모달 */}
     <LoginReqModal loginRef={loginRef} />
 
@@ -257,8 +261,8 @@ function Diary({ userinfo, setLoading }) {
         </div>
         <form ref={formRef} className="add-diary flex-col a-center hidden">
           <input ref={titleRef} type="text" className="add-title" placeholder="제목을 입력해 주세요"></input>
-          <img ref={imgRef} className="fileImg"></img>
-          <label className="addFile" for="addFile">파일을 선택해주세요</label>
+          <img ref={imgRef} className="fileImg" alt=""/>
+          <label className="addFile" htmlFor="addFile">파일을 선택해주세요</label>
           <input ref={fileRef} id="addFile" className="hidden" type="file" accept="image/*" onChange={ setImg }></input>
           <textarea ref={textRef} className="add-text" placeholder="일기를 적어보세요"></textarea>
           <div className="flex">
@@ -269,7 +273,7 @@ function Diary({ userinfo, setLoading }) {
         </form>
       </div>
       {/* 다이어리 데이터가 있으면 나열 , 없으면 아무것도 없다는 이미지 표시 */}
-      {diaries ? diaries.map(el => <DiaryPage diary={el}/>) : null}
+      {diaries ? diaries.map((el, idx) => <DiaryPage userinfo={userinfo} data={el} key={v4()}/>) : null}
     </div>
     <Nav userinfo={userinfo} page="diary"/>
     </>

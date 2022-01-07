@@ -23,10 +23,17 @@ module.exports = async (req, res) => {
         }
       })
       const diary_comment = await db.diary_comment.findAll({
+        // attributes: {include: ["name"]},
         where: {
           diary_id: el.id
-        }
+        },
+        include: [{ 
+                model: db.user,
+                attributes: ["name"],
+                required: false
+              }]
       })
+      console.log(diary_comment)
       result.pictures = pictures;
       result.diary_comment = diary_comment;
       return result;

@@ -7,6 +7,7 @@
 }
 
 .diary {
+  position: relative;
   box-shadow: 0px 0px 5px 0px #0076BA;
   border-radius: 10px;
   margin: 6px 0px;
@@ -31,6 +32,7 @@
 .add-diary {
   transition: all 0.3s;
   flex: 1;
+  overflow-y: scroll;
 }
 
 .addFile {
@@ -52,6 +54,7 @@
 .add-text {
   flex: 1;
   width: 90%;
+  min-height: 50%;
   border: 0;
   font-size: 24px;
   font-family: 'Gaegu', cursive;
@@ -64,9 +67,11 @@
 }
 
 .diary-img-box {
+  position: relative;
   width: 48%;
   overflow-y: scroll;
   max-height: 100%;
+  transition: all 0.3s;
 }
 
 .diary-img {
@@ -79,14 +84,16 @@
 }
 
 .fileImg {
-  /* max-width: 240px; */
+  max-width: 240px;
   max-height: 200px;
 }
 
 .diary-docs {
+  position: relative;
   width: 48%;
-  max-height: 100%;
+  max-height: 98%;
   overflow-y: scroll;
+  transition: all 0.3s;
 }
 
 .diary-doc {
@@ -94,10 +101,6 @@
   padding: 10px;
 }
 
-.add-post {
-  padding: 0px 10px;
-  width: 90%;
-}
 
 .diary-blank {
   padding-top: 1px;
@@ -106,7 +109,7 @@
 
 .z-add {
   position: fixed;
-  /* z-index: 1; */
+  z-index: 1;
   margin: 0;
   /* max-height: 100%; */
   top: 130px;
@@ -166,6 +169,7 @@
   
   .diary-docs {
     width: 95%;
+    height: 50%;
     overflow-y: visible;
   }
 

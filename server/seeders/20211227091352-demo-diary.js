@@ -5,79 +5,92 @@ module.exports = {
     await queryInterface.bulkInsert('diaries', [{
       title: '예쁜 금쪽이',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '얼큰이 금쪽이',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '우리 금쪽이',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '다리좀봐라',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
     {
       title: '아들이냐 딸이냐',
       writer: 1,
-      createdAt: new Date().toLocaleDateString('en-US'),
+      date: "2022-01-06",
+      createdAt: new Date(),
       updatedAt: new Date()
     },
   ], {});

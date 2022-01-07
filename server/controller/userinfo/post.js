@@ -4,12 +4,14 @@ const bcrypt = require('bcryptjs');
 const db = require('../../models');
 
 module.exports = async (req, res) => {
+  console.log(req.body)
   //받아온 정보
   const { id, email, password, name, gender } = req.body;
   const saltRounds = Number(SALTROUNDS);
 
   //정보가 잘못되면
   if( typeof id !== "string" || typeof email !== "string" || typeof password !== "string" || typeof name !== "string"  || !(gender === "male" || gender === "female")) {
+  // if( typeof id !== "string" || typeof email !== "string" || typeof password !== "string" || typeof name !== "string" ) {
     //잘못 보내온 키와 값 배열로 만들기
     const keys = [];
     const values = [];

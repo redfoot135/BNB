@@ -11,7 +11,7 @@ function TalkPage ({ talk }) {
   const post = useRef(null);
   const comments = useRef(null);
 
-  // 일기 페이지 열기
+  // 톡 페이지 열기
   const open = (e) => {
     talkPost.current.classList.add("z-add");
     post.current.classList.remove("mini");
@@ -20,7 +20,7 @@ function TalkPage ({ talk }) {
     talkContents.current.classList.remove("mini");
   }
 
-  // 일기 페이지 닫기
+  // 톡 페이지 닫기
   const close = (e) => {
     talkPost.current.classList.remove("z-add");
     post.current.classList.add("mini");
@@ -37,11 +37,9 @@ function TalkPage ({ talk }) {
         <div>&lt;금쪽이 엄마&gt; 제목입니당</div>
         <div className="talk-day">2021년 12월 21일 00:00</div>
       <div ref={talkContents} className="talk-contents flex a-center j-space-around mini">
-        <div className="talk-text flex-col a-center j-space-around">
-        <div ref={post} className="post" className="mini">
+        <div ref={post} className="talk-text flex-col a-center mini">
           여기는 본문 내용
           여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용 여기는 본문 내용
-        </div>
         </div>
         <div ref={comments} className="talk-comments flex-col a-center mini">
           <div className="add-post">+</div>

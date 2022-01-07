@@ -35,9 +35,6 @@ module.exports = async (req, res) => {
     let query = { mom: userinfo.id };
     if(userinfo.gender === "male") query = { dad: userinfo.id };
     const baby = await db.baby.findOne({
-      attributes: {
-        exclude: ['createdAt', 'updatedAt']
-      },
       where : query,
     })
     const data = {
@@ -49,7 +46,7 @@ module.exports = async (req, res) => {
       spouse: userinfo.spouse
     }
     if(baby) {
-      data.baby = baby.dataValues.name,
+      data.baby = baby.dataValues.baby,
       data.birthday = baby.dataValues.birthday
     }
     // 토큰 만들기

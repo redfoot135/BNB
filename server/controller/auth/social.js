@@ -3,9 +3,10 @@ const { KAKAO_API_KEY, KAKAO_CLIENT_SECRET } = process.env;
 const qs = require('qs');
 const { default: axios } = require("axios");
 const db = require('../../models');
+const { Op } = require("sequelize");
 const { createAccessToken, createRefreshToken } = require('../token');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const { kakao, google } = req.body;
   //카카오 토큰을 보내오면
   if( kakao ) {
@@ -58,25 +59,45 @@ module.exports = (req, res) => {
           }
         })
         //만들었거나 받아온 유저 정보(패스워드 제외)
-        const { idName, name, email, social, gender, spouse } = data.dataValues;
+        const { id, idName, name, email, social, gender, spouse } = data.dataValues;
         const accessToken = createAccessToken(payload);
-        return res.status(200).json({
-          data: {
-            accessToken: accessToken,
+        const refreshToken = createRefreshToken(payload);
+        const datas = {
+          accessToken: accessToken,
             id: idName,
             name: name,
             email: email,
             social: social,
             gender: gender,
             spouse: spouse
-          },
+        }
+
+        const baby = await db.baby.findOne({
+          where : {[Op.or]: [{ mom: id }, { dad: id }]},
+        })
+        
+        if(baby) {
+          datas.baby = baby.dataValues.baby,
+          datas.birthday = baby.dataValues.birthday
+        }
+
+        res.cookie("refreshToken", refreshToken, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none"
+        });
+
+        return res.status(200).json({
+          data: datas,
           message: "Information passed"
         })
       })
       //2번 axios요청 실패시
-      .catch(err => res.status(400).json({ error: "This token information is incorrect" }))
+      .catch(err => {
+        res.status(400).json({ error: "This token information is incorrect1" })
+      })
     })
     //1번 axios요청 실패시
-    .catch(err => res.status(400).json({ error: "This token information is incorrect" }))
+    .catch(err => res.status(400).json({ error: "This token information is incorrect2" }))
   }
 }
