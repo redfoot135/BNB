@@ -9,14 +9,14 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "https://b-n-b.link",
-    credentials: true,
-    origin: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://b-n-b.link",
+//     credentials: true,
+//     origin: true,
+//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+//   })
+// );
 
 //필요 기능 라우팅
 // app.use("/auth", auth);
