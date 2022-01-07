@@ -30,6 +30,6 @@ app.get("/", (req, res) => {
   res.send("Hello BNB World!!")
 });
 
-server = app.listen(80, () => console.log("port : 80, HTTP server running"))
+server = app.listen(80)
 
 module.exports = server;
