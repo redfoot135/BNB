@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const { createAccessToken, createRefreshToken } = require('../token');
 
 module.exports = async (req, res) => {
-  console.log(req.body)
   //받아온 아이디 패스워드
   const { id, password } = req.body;
   //잘못된 정보일 때

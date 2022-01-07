@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const db = require('../../models');
 
 module.exports = async (req, res) => {
-  console.log(req.body)
   //받아온 정보
   const { id, email, password, name, gender } = req.body;
   const saltRounds = Number(SALTROUNDS);
