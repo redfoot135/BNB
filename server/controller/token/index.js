@@ -74,7 +74,6 @@ module.exports = {
       const info = await db.user.findOne({
         where: { [Op.or] : [{ idName: payload.id }, { social: `${payload.social}` }]},
       })
-      if(!info) console.log("1차 걸림")
       if(!info) return null;
       const userinfo = info.dataValues;
       let query = { mom: userinfo.id };

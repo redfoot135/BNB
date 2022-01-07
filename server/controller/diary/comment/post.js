@@ -14,12 +14,8 @@ module.exports = async (req, res) => {
     writer: check.name,
     comment: comment
   })
-  console.log(create)
   create.dataValues.user = { name: check.name };
-  console.log(create)
 
-
-  
   res.status(201).json(
     {
       data: create,

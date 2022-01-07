@@ -33,7 +33,6 @@ module.exports = async (req, res) => {
                 required: false
               }]
       })
-      console.log(diary_comment)
       result.pictures = pictures;
       result.diary_comment = diary_comment;
       return result;

@@ -3,7 +3,6 @@ const db = require('../../models');
 const { Op } = require("sequelize");
 
 module.exports = async (req, res) => {
-  console.log(req.body)
   // 액세스 토큰 검증
   const check = await tokenCheck(req);
   // 검증 실패
@@ -18,6 +17,5 @@ module.exports = async (req, res) => {
   const table = query.name ? db.user : db.baby;
   const where = query.name ? {where: { id: check.id }} : {where: {[Op.or]: [{ mom: check.id }, { dad: check.id }]}};
   const change = await table.update(query, where)
-  console.log(change)
   res.send("Userinfo Patch")
 }

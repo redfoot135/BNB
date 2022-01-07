@@ -15,8 +15,6 @@ module.exports = async (req, res) => {
     writer: check.id
   })
 
-  console.log(check)
-
   await db.diary_comment.create({
     diary_id: createDiary.dataValues.id,
     user_id: check.id,

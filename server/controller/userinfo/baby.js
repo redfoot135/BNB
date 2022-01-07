@@ -4,7 +4,6 @@ const { Op } = require("sequelize");
 
 module.exports = async (req, res) => {
   const { baby, birthday, gender, name } = req.body;
-  console.log(req.body)
   const check = await tokenCheck(req);
   // 검증 실패
   if(check.error) return res.status(400).json(check);
