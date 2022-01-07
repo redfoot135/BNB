@@ -179,7 +179,7 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
   }
 
   const emailTest = () => {
-    const test = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;;
+    const test = /^[A-Za-z0-9_.-]+@[A-Za-z0-9-]+\.[A-Za-z0-9-]+/;
     const result = test.test(emailRef.current.value);
     if(!result) {
       setEmailErrMessage("유효한 이메일을 적어주세요")

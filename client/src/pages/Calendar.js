@@ -30,8 +30,6 @@ function Calendar({ userinfo }) {
   const checkRef = useRef(null);
   const text = useRef("");
   const time = useRef("");
-  // const message = useRef("");
-  const func = useRef("");
   const idx = useRef(null);
 
   useEffect(() => {
@@ -46,7 +44,7 @@ function Calendar({ userinfo }) {
         setSchedules(res.data.data);
       })
     }
-  },[ month, date, userinfo])
+  },[ year, month, date, userinfo])
 
   const prevLastDate = Number(new Date(year, month, 0).getDate());
   const lastDate = Number(new Date(year, month+1, 0).getDate());

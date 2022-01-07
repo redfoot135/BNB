@@ -1,5 +1,4 @@
 import axios from 'axios';
-import req from 'express/lib/request';
 import { useRef, useState } from 'react';
 import './FirstCheck.css';
 import { useNavigate } from "react-router-dom";
