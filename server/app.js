@@ -5,8 +5,6 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 // const { auth, diary, calendar, talk, userinfo } = require('./routes');
 
-const HTTPS_PORT = 80;
-
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -46,7 +44,7 @@ let server;
 //   server.listen(HTTPS_PORT, () => console.log(`Port : ${HTTPS_PORT}, HTTPS server runnning`));
 
 // } else {
-  server = app.listen(8080, () => console.log("port : 80, HTTP server running"))
+  server = app.listen(80, () => console.log("port : 80, HTTP server running"))
 // };
 
 module.exports = server;
