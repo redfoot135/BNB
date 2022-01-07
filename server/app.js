@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const { auth, diary, calendar, talk, userinfo } = require('./routes');
+// const { auth, diary, calendar, talk, userinfo } = require('./routes');
 
 const HTTPS_PORT = 80;
 
@@ -27,12 +27,6 @@ app.use(
 
 // 테스트용 get, post요청
 app.get("/", (req, res) => {
-  console.log(req)
-  console.log(req.body)
-  res.send("Hello BNB World!!")
-});
-
-app.post("/", (req, res) => {
   console.log(req)
   console.log(req.body)
   res.send("Hello BNB World!!")
