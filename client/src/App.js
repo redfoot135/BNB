@@ -40,12 +40,12 @@ function App() {
         <div className="container flex-col a-center j-center">
           <Routes>
             <Route exact path='/' element={ <Main userinfo={userinfo} /> } />
-            {/* <Route path='/Diary' element={ <Diary userinfo={userinfo} setLoading={setLoading} /> } />
+            <Route path='/Diary' element={ <Diary userinfo={userinfo} setLoading={setLoading} /> } />
             <Route path='/Calendar' element={ <Calendar userinfo={userinfo} /> } />
             <Route path='/Talk' element={ <Talk userinfo={userinfo} setLoading={setLoading} /> } />
             <Route path='/Mypage' element={ <Mypage userinfo={userinfo} setUserinfo={setUserinfo}/> } />
             <Route path='/Login' element={ <Login userinfo={userinfo} setLoading={setLoading} setUserinfo={setUserinfo} /> } />
-            <Route path='/Kakao' element={ <Kakao setLoading={setLoading} setUserinfo={setUserinfo} /> } /> */}
+            <Route path='/Kakao' element={ <Kakao setLoading={setLoading} setUserinfo={setUserinfo} /> } />
           </Routes>
         </div>
       </div>

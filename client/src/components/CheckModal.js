@@ -1,4 +1,4 @@
-function FailModal ({ checkRef , func, message }) {
+function CheckModal ({ checkRef , func, message }) {
 
   const failClose = () => {
     checkRef.current.classList.add("hidden");
@@ -15,4 +15,4 @@ function FailModal ({ checkRef , func, message }) {
   )
 }
 
-export default FailModal;
+export default CheckModal;
