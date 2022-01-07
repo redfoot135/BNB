@@ -153,7 +153,9 @@ function Diary({ userinfo, setLoading }) {
         axios.post(`${REACT_APP_SERVER}/diary`, {
           title: titleRef.current.value,
           comment: textRef.current.value,
-          url: data.Location
+          url: data.Location,
+          date: `${new Date().getFullYear()}-${Number(new Date().getMonth())+1}-${Number(new Date().getDate())}`
+          // date: `${new Date().getFullYear()}-${Number(new Date().getMonth()) < 9 ? "0" + (Number(new Date().getMonth())+1) : (Number(new Date().getMonth())+1)}-${Number(new Date().getDate()) < 10 ? ("0" + Number(new Date().getDate())) : Number(new Date().getDate())}`
         }, {
           headers: {
             authorization: `Bearer ${userinfo.accessToken}`

@@ -7,7 +7,7 @@ import axios from 'axios';
 const { REACT_APP_SERVER } = process.env;
 
 function DiaryPage ({ userinfo, data }) {
-  
+  console.log(data)
   const [ diary, setDiary ] = useState(data);
   const [ comments, setComments ] = useState(diary.diary_comment);
   const [ message, setMessage ] = useState("");
