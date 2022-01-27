@@ -1,6 +1,6 @@
 function CheckModal ({ checkRef , func, message }) {
 
-  const failClose = () => {
+  const checkClose = () => {
     checkRef.current.classList.add("hidden");
     if(func) func();
   }
@@ -9,7 +9,7 @@ function CheckModal ({ checkRef , func, message }) {
     <div ref={ checkRef } className="modal flex a-center j-center hidden">
       <div className="message flex-col a-center j-space-evenly">
         <div>{ message }</div>
-        <button className="modal-button" onClick={failClose}>확 인</button>
+        <button className="modal-button" onClick={checkClose}>확 인</button>
       </div>
     </div>
   )

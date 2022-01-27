@@ -24,7 +24,6 @@ function App() {
   useEffect(() => {
     axios.get(`${REACT_APP_SERVER}/auth/autoLogin`, { withCredentials: true })
     .then(res => {
-      console.log(res.data)
       if(res.data.data && res.data.data.birthday) res.data.data.birthday = res.data.data.birthday.slice(0,10);
       setUserinfo(res.data.data);
     })

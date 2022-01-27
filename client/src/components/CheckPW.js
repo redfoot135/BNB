@@ -23,8 +23,9 @@ function CheckPW ({ checkPWRef, userinfo }) {
     })
   }
   
-  const errClose = () => {
+  const errClose = (e) => {
     errRef.current.classList.add("hidden");
+    if(e.key === "Enter") pwCheck();
   }
   
   const close = () => {
