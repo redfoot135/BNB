@@ -1,6 +1,6 @@
 import './Mypage.css';
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Title from '../components/Title';
 import Nav from '../components/Nav';
 import FailModal from '../components/FailModal';
@@ -10,6 +10,10 @@ import axios from 'axios';
 const { REACT_APP_SERVER } = process.env;
 
 function Mypage({ userinfo, setUserinfo }) {
+
+  const [ func, setFunc ] = useState(null);
+  const [ message, setMessage ] = useState(null);
+
   const navigate = useNavigate();
   const failRef = useRef(null);
   const checkPWRef = useRef(null);
@@ -70,19 +74,33 @@ function Mypage({ userinfo, setUserinfo }) {
     })
   }
 
-  const checkPW = () => {
+  const checkPW = (e) => {
+    if(e.target.attributes.name.value === "change") setFunc(null);
+    if(e.target.attributes.name.value === "delete") setFunc(destroy);
     checkPWRef.current.classList.remove("hidden");
   }
 
+  const destroy = () => {
+    axios.delete(`${REACT_APP_SERVER}/userinfo`)
+    .then(res => {
+
+    })
+    .catch(err => {
+
+    })
+  }
+
+  
   const test = () => {
+    setMessage("개발중입니다")
     checkRef.current.classList.remove("hidden");
 
   }
 
   return (
     <>
-    <CheckModal checkRef={checkRef} func={null} message="개발중입니다"/>
-    <CheckPW checkPWRef={checkPWRef} userinfo={userinfo}/>
+    <CheckModal checkRef={checkRef} func={null} message={message}/>
+    <CheckPW checkPWRef={checkPWRef} func={func} userinfo={userinfo}/>
     <FailModal failRef={failRef}/>
     <Title title="내 정 보" />
     <div className="mypage-container flex a-center j-space-evenly" >

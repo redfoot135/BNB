@@ -38,12 +38,14 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
   //회원가입 용도
   const signupIdRef = useRef(null);
   const signupPWRef = useRef(null);
+  const signupPWRef2 = useRef(null);
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   // 에러
   const idErrRef = useRef(null);
   const idErrRef2 = useRef(null);
   const pwErrRef = useRef(null);
+  const pwErrRef2 = useRef(null);
   const nameErrRef = useRef(null);
   const emailErrRef = useRef(null);
   const checkRef = useRef(null);
@@ -59,7 +61,8 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
   
   
   //로그인 요청 보내기
-  const postLogin = () => {
+  const postLogin = (e) => {
+    if(e.key && e.key !== "Enter") return ;
     axios.post(`${REACT_APP_SERVER}/auth/login`, 
     {
       id: idInput.current.value,
@@ -85,13 +88,14 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
   }
 
   //회원가입 요청 보내기
-  const signup = () => {
+  const signup = (e) => {
+    if(e.key && e.key !== "Enter") return ;
     if(!idTest()) {
       setMessage("아이디를 확인해주세요");
       setFocus(signupIdRef)
       return checkRef.current.classList.remove("hidden");
     }
-    if(!pwTest()) {
+    if(!pwTest() || !compare()) {
       setMessage("비밀번호를 확인해주세요");
       setFocus(signupPWRef)
       return checkRef.current.classList.remove("hidden");
@@ -221,7 +225,8 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
     findContents.current.classList.remove("moveRight");
   }
 
-  const findIdSubmit = () => {
+  const findIdSubmit = (e) => {
+    if(e.key && e.key !== "Enter") return ;
     axios.get(`${REACT_APP_SERVER}/userinfo/id?email=${findIdRef.current.value}`)
     .then(res => {
       setFindId(res.data.data.id)
@@ -234,7 +239,8 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
     })
   }
 
-  const findPWSubmit = () => {
+  const findPWSubmit = (e) => {
+    if(e.key && e.key !== "Enter") return ;
     axios.get(`${REACT_APP_SERVER}/userinfo/pw?id=${findPWRef1.current.value}&email=${findPWRef2.current.value}`)
     .then(res => {
       findPWMessage.current.classList.remove("hidden");
@@ -262,6 +268,17 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
     }
   }
 
+  const compare = () => {
+    if(signupPWRef.current.value !== signupPWRef2.current.value) {
+      pwErrRef2.current.classList.remove("hidden");
+      return false;
+    }else {
+      pwErrRef2.current.classList.add("hidden");
+      return true;
+    }
+  }
+
+
   return (
     <>
     <CheckModal checkRef={checkRef} func={func} message={message}/>
@@ -272,14 +289,14 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
 
           <div className="find-contents flex-col a-center j-space-around" ref={findContents}>
             <div className="find-box1 flex-col a-center j-space-between">
-              <input ref={findIdRef} className="login-input" type="text" placeholder="이 메 일"></input>
+              <input ref={findIdRef} className="login-input" type="text" placeholder="이 메 일" onKeyDown={findIdSubmit}></input>
               <button type="button" className="loginButton nomalButton" onClick={findIdSubmit}>아이디 찾기</button>
             </div>
             <div ref={findIdMessage} className="ok hidden">아이디는 "{findId}" 입니다.</div>
             <div ref={findIdErr} className="error hidden">일치하는 정보가 없습니다.</div>
             <div className="find-box2 flex-col a-center j-space-between">
               <input ref={findPWRef1} className="login-input" type="text" placeholder="아 이 디"></input>
-              <input ref={findPWRef2} className="login-input" type="text" placeholder="이 메 일"></input>
+              <input ref={findPWRef2} className="login-input" type="text" placeholder="이 메 일" onKeyDown={findPWSubmit}></input>
               <button type="button" className="loginButton nomalButton" onClick={findPWSubmit}>패스워드 찾기</button>
             </div>
             <div ref={findPWErr} className="error hidden">일치하는 정보가 없습니다.</div>
@@ -289,7 +306,7 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
 
           <form className="login-contents flex-col a-center j-space-around" ref={loginContents}>
             <input className="login-input" type="text" ref={idInput} maxLength="12" placeholder="아 이 디" onChange={loginErrHide}></input>
-            <input className="login-input" type="password" ref={pwInput} placeholder="패 스 워 드" autoComplete="true" onChange={loginErrHide}></input>
+            <input className="login-input" type="password" ref={pwInput} placeholder="패 스 워 드" autoComplete="true" onChange={loginErrHide} onKeyDown={postLogin}></input>
             <div className="error hidden" ref={loginError} >아이디 또는 패스워드를 확인해주세요!</div>
             <div className="keepLogin">
               <input type="checkbox" ref={keepLogin}/>로그인 상태 유지
@@ -310,11 +327,13 @@ function Login ({ userinfo, setLoading, setUserinfo }) {
             <input ref={signupIdRef} className="login-input" type="text" onChange={idTest} maxLength="12" placeholder="아 이 디"/>
             <div ref={idErrRef} className="error hidden" >{idErrMessage}</div>
             <div ref={idErrRef2} className="ok hidden" >유효한 아이디 입니다</div>
-            <input ref={signupPWRef} className="login-input" type="password" onChange={pwTest} maxLength="24" placeholder="패 스 워 드" autoComplete="true"/>
+            <input ref={signupPWRef} className="login-input" type="password" onChange={pwTest} maxLength="24" placeholder="패 스 워 드" autoComplete="false"/>
+            <input ref={signupPWRef2} className="login-input" type="password" onChange={compare} maxLength="24" placeholder="패 스 워 드" autoComplete="false"/>
             <div ref={pwErrRef} className="error hidden" >알파벳 대소문자, 숫자, 4~24자리</div>
+            <div ref={pwErrRef2} className="error hidden" >비밀번호가 일치하지 않습니다</div>
             <input ref={nameRef} className="login-input" type="text" onChange={nameTest} maxLength="10" placeholder="이 름(닉네임)"/>
             <div ref={nameErrRef} className="error hidden" >2~10자리</div>
-            <input ref={emailRef} className="login-input" type="text" onChange={emailTest} placeholder="이 메 일"/>
+            <input ref={emailRef} className="login-input" type="text" onChange={emailTest} placeholder="이 메 일" onKeyDown={signup}/>
             <div ref={emailErrRef} className="error hidden" >{emailErrMessage}</div>
             <div className="flex a-center j-space-between male-togle-back " onClick={togle}>
               <div className="togle-in"></div>
