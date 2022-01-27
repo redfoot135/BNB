@@ -29,14 +29,6 @@ app.use("/userinfo", userinfo);
 
 // 테스트용 get, post요청
 app.get("/", (req, res) => {
-  console.log(req)
-  console.log(req.body)
-  res.send("Hello BNB World!!")
-});
-
-app.post("/", (req, res) => {
-  console.log(req)
-  console.log(req.body)
   res.send("Hello BNB World!!")
 });
 
